@@ -1,11 +1,11 @@
 {
   pkgs,
-  lib,
   inputs,
   self,
   ...
-}:
-with lib; {
+}: let
+  fenixPkgs = inputs.fenix.packages.${pkgs.system}.stable;
+in {
   imports = [self.nixosModules.all ./hardware.nix ./disko.nix];
 
   # System
@@ -85,20 +85,25 @@ with lib; {
   };
 
   services.flatpak.enable = true;
-  environment.systemPackages = with pkgs; [
-    dconf2nix
-    eza
-    fd
-    git
-    hyperfine
-    jaq
-    moar
-    nitch
-    ripgrep
-    rm-improved
-    sd
-    tealdeer
-    vesktop
-    xh
+  environment.systemPackages = [
+    fenixPkgs.rust-docs
+    pkgs.bacon
+    pkgs.cargo
+    pkgs.cargo-flamegraph
+    pkgs.eza
+    pkgs.fd
+    pkgs.gcc
+    pkgs.git
+    pkgs.hyperfine
+    pkgs.jaq
+    pkgs.moar
+    pkgs.nurl
+    pkgs.ripgrep
+    pkgs.rustfmt
+    pkgs.sd
+    pkgs.tealdeer
+    pkgs.ungoogled-chromium
+    pkgs.vesktop
+    pkgs.xh
   ];
 }
