@@ -20,13 +20,7 @@
   programs.starship.enable = true;
   programs.direnv.enable = true;
   programs.ghostty.enable = true;
-  programs.git = {
-    enable = true;
-    settings = {
-      push.autoSetupRemote = true;
-      pull.rebase = true;
-    };
-  };
+  programs.git.enable = true;
   programs.gpg.enable = true;
   programs.gh.enable = true;
   programs.zoxide.enable = true;

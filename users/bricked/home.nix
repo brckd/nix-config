@@ -26,19 +26,9 @@
   programs.ghostty.enable = true;
   programs.git = {
     enable = true;
-    settings = {
-      user = {
-        name = "bricked";
-        email = "spider@bricked.dev";
-      };
-      push.autoSetupRemote = true;
-      pull.rebase = true;
-      pager = {
-        diff = "${pkgs.riffdiff}/bin/riff";
-        show = "${pkgs.riffdiff}/bin/riff";
-        log = "${pkgs.riffdiff}/bin/riff";
-      };
-      interactive.diffFilter = "${pkgs.riffdiff}/bin/riff";
+    settings.user = {
+      name = "bricked";
+      email = "spider@bricked.dev";
     };
     signing = {
       signByDefault = true;
