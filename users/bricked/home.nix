@@ -8,7 +8,7 @@
   nixpkgs.config.allowUnfree = true;
 
   home = {
-    stateVersion = "25.05";
+    stateVersion = "25.11";
     username = "bricked";
     homeDirectory = "/home/bricked";
   };
@@ -26,9 +26,11 @@
   programs.ghostty.enable = true;
   programs.git = {
     enable = true;
-    userName = "bricked";
-    userEmail = "spider@bricked.dev";
-    extraConfig = {
+    settings = {
+      user = {
+        name = "bricked";
+        email = "spider@bricked.dev";
+      };
       push.autoSetupRemote = true;
       pull.rebase = true;
       pager = {

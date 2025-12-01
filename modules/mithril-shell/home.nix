@@ -5,7 +5,7 @@
   inputs,
   ...
 }: let
-  inherit (lib) mkIf mkDefault mkMerge;
+  inherit (lib) mkIf mkMerge;
   cfg = config.services.mithril-shell;
 in {
   imports = [inputs.mithril-shell.homeManagerModules.default];
@@ -14,7 +14,7 @@ in {
     wayland.windowManager.hyprland.enable = true; # Wayland compositor
     programs.anyrun.enable = true;
     services.swaync.enable = true; # Notification daemon
-    services.gnome-keyring.enable = mkDefault true; # Secrets manager
+    services.gnome-keyring.enable = true; # Secrets manager
     services.gpg-agent = {
       enable = true;
       pinentry.package = pkgs.pinentry-gnome3; # Passphrase input

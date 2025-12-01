@@ -73,11 +73,11 @@
 
   inputs = {
     # Package reposities
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
     # Systems
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -122,17 +122,14 @@
 
     # Theming
     stylix = {
-      url = "github:nix-community/stylix/release-25.05";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.git-hooks.follows = "git-hooks";
       inputs.systems.follows = "systems";
-      inputs.home-manager.follows = "home-manager";
       inputs.flake-parts.follows = "flake-parts";
     };
 
     mithril-shell = {
-      url = "github:andreashgk/mithril-shell/fix/multi-user";
+      url = "github:bricked-contrib/mithril-shell";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
       inputs.flake-utils.follows = "flake-utils";
@@ -175,7 +172,7 @@
     };
 
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.2";
+      url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";

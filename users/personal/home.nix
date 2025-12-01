@@ -1,14 +1,10 @@
-{
-  self,
-  pkgs,
-  ...
-}: {
+{self, ...}: {
   imports = [self.homeModules.all];
 
   nixpkgs.config.allowUnfree = true;
 
   home = {
-    stateVersion = "25.05";
+    stateVersion = "25.11";
     username = "personal";
     homeDirectory = "/home/personal";
   };
@@ -26,7 +22,7 @@
   programs.ghostty.enable = true;
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       push.autoSetupRemote = true;
       pull.rebase = true;
     };

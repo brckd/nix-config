@@ -7,7 +7,7 @@
 }:
 with lib; let
   cfg = config.programs.librewolf;
-  firefox-addons = inputs.firefox-addons.packages.${pkgs.system};
+  firefox-addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   config = mkIf cfg.enable {
     programs.librewolf = {

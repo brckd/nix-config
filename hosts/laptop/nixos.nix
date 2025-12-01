@@ -4,12 +4,12 @@
   self,
   ...
 }: let
-  fenixPkgs = inputs.fenix.packages.${pkgs.system}.stable;
+  fenixPkgs = inputs.fenix.packages.${pkgs.stdenv.hostPlatform.system}.stable;
 in {
   imports = [self.nixosModules.all ./hardware.nix ./disko.nix];
 
   # System
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
   networking.hostName = "laptop";
   nixpkgs.config.allowUnfree = true;
 
@@ -71,7 +71,7 @@ in {
   services.kanata.enable = true;
 
   # Desktop
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
   services.mithril-shell.enable = true;
 
   # Shell
@@ -96,7 +96,7 @@ in {
     pkgs.git
     pkgs.hyperfine
     pkgs.jaq
-    pkgs.moar
+    pkgs.moor
     pkgs.nurl
     pkgs.ripgrep
     pkgs.rustfmt
