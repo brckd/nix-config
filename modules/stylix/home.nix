@@ -29,7 +29,6 @@ in {
         profileNames = ["default"];
         firefoxGnomeTheme.enable = true;
       };
-      targets.vscode.profileNames = ["default"];
     };
   };
 }

@@ -47,7 +47,6 @@
     enable = true;
     defaultEditor = true;
   };
-  programs.vscode.enable = true;
 
   # Apps
   programs.librewolf.enable = true;
