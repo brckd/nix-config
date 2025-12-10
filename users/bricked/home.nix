@@ -51,4 +51,5 @@
   # Apps
   programs.librewolf.enable = true;
   programs.spicetify.enable = true;
+  programs.adwaita-demo.enable = true;
 }
