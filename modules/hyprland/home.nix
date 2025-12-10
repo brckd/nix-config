@@ -33,6 +33,8 @@
     }.${
       dir
     };
+
+  toggleAnyrun = "pgrep anyrun && pkill anyrun || ${config.programs.anyrun.package}/bin/anyrun";
 in {
   options.wayland.windowManager.hyprland = {
     keys = {
@@ -49,9 +51,9 @@ in {
         };
       };
       directions = {
-        up = mkDirectionOption "up" "I";
-        down = mkDirectionOption "down" "K";
-        left = mkDirectionOption "left" "J";
+        up = mkDirectionOption "up" "K";
+        down = mkDirectionOption "down" "J";
+        left = mkDirectionOption "left" "H";
         right = mkDirectionOption "right" "L";
       };
     };
@@ -142,12 +144,17 @@ in {
         ];
 
         bindr = [
-          "${cfg.keys.modifiers.main}, Super_L, exec, ${config.programs.anyrun.package}/bin/anyrun"
+          "${cfg.keys.modifiers.main}, Super_L, exec, ${toggleAnyrun}"
         ];
 
         bindm = [
           "${cfg.keys.modifiers.main}, mouse:272, movewindow"
           "${cfg.keys.modifiers.main}, mouse:273, resizewindow"
+        ];
+
+        gesture = [
+          "3, horizontal, workspace"
+          "3, vertical, dispatcher, exec, ${toggleAnyrun}"
         ];
       };
     };
