@@ -1,0 +1,95 @@
+:root {
+  --plugin-info-width: 150px;
+  --margin: 12px;
+  --padding: 9px;
+  --card-border-radius: 12px;
+  --card-bg-color: @card_bg_color;
+  --card-fg-color: @card_fg_color;
+  --card-shade-color: @card_shade_color;
+}
+
+/* Search entry */
+.main > text {
+  margin: var(--margin) calc(var(--plugin-info-width) + var(--margin) * 3);
+
+  min-height: 34px;
+  padding-left: var(--padding);
+  padding-right: var(--padding);
+  border-radius: 6px;
+  border-spacing: 6px;
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+  background-clip: padding-box;
+  caret-color: currentColor;
+
+  outline: 0 solid transparent;
+  outline-offset: 4px;
+}
+
+.main > text:focus-within {
+  outline-color: color-mix(in srgb, var(--accent-color) 50%, transparent);
+  outline-width: 2px;
+  outline-offset: -2px;
+}
+
+/* Plugin info */
+box.plugin.info {
+  margin: var(--margin);
+  min-width: var(--plugin-info-width);
+}
+
+image.plugin.info {
+  margin-right: var(--margin);
+}
+
+/* Plugin search results list */
+list.plugin {
+  margin: var(--margin);
+  background: none;
+
+  background-color: var(--card-bg-color);
+  color: var(--card-fg-color);
+  border-radius: var(--card-border-radius);
+  box-shadow:
+    0 0 0 1px RGB(0 0 0/3%),
+    0 1px 3px 1px RGB(0 0 0/7%),
+    0 2px 6px 2px RGB(0 0 0/3%);
+
+  outline: 0 solid transparent;
+  outline-offset: 5px;
+}
+
+/* Search result */
+row.match {
+  min-height: 32px;
+  padding: var(--padding);
+  border-bottom: 1px solid var(--card-shade-color);
+}
+
+row.match:selected {
+  background: unset;
+  outline-color: color-mix(in srgb, var(--accent-color) 50%, transparent);
+  outline-width: 2px;
+  outline-offset: -1px;
+}
+
+row.match:hover {
+  background-color: var(--card-bg-color);
+  background-image: image(color-mix(in srgb, currentColor 3%, transparent));
+}
+
+row.match:first-child {
+  border-top-left-radius: var(--card-border-radius);
+  border-top-right-radius: var(--card-border-radius);
+}
+
+row.match:last-child {
+  border-bottom-left-radius: var(--card-border-radius);
+  border-bottom-right-radius: var(--card-border-radius);
+  border-bottom: none;
+}
+
+/* Search result description */
+.match.description {
+  font-size: smaller;
+  opacity: 55%;
+}
