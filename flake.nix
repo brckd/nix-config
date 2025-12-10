@@ -130,7 +130,8 @@
 
     mithril-shell = {
       url = "github:bricked-contrib/mithril-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # Don't override nixpkgs input as advised in
+      # https://andreashgk.github.io/mithril-shell/getting-started/installation#setup
       inputs.home-manager.follows = "home-manager";
       inputs.flake-utils.follows = "flake-utils";
     };

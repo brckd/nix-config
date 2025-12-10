@@ -428,16 +428,14 @@
         "home-manager": [
           "home-manager"
         ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1764611053,
+        "lastModified": 1764884363,
         "narHash": "sha256-j1zFCqHPjcgZtgz98Db0nBxHwU2qMifxxrTakq67unQ=",
         "owner": "bricked-contrib",
         "repo": "mithril-shell",
-        "rev": "6bcae14099bf361e4fc249fee919cbd814624e2c",
+        "rev": "21d77fee07d9fa51f8a13a3c62fbc42518f55d9b",
         "type": "github"
       },
       "original": {
@@ -467,6 +465,22 @@
       }
     },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1761907660,
+        "narHash": "sha256-kJ8lIZsiPOmbkJypG+B5sReDXSD1KGu2VEPNqhRa/ew=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "2fb006b87f04c4d3bdf08cfdbc7fab9c13d94a15",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1764522689,
         "narHash": "sha256-SqUuBFjhl/kpDiVaKLQBoD8TLD+/cTUzzgVFoaHrkqY=",
@@ -523,7 +537,7 @@
         "lanzaboote": "lanzaboote",
         "mithril-shell": "mithril-shell",
         "nixdg-ninja": "nixdg-ninja",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "systems": "systems",
