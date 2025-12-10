@@ -98,6 +98,7 @@ in {
     pkgs.jaq
     pkgs.moor
     pkgs.nurl
+    pkgs.nix-melt
     pkgs.ripgrep
     pkgs.rustfmt
     pkgs.sd
