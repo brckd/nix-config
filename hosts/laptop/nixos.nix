@@ -62,12 +62,9 @@ in {
 
   # Preferences
   stylix.enable = true;
-  locale = {
-    timeZone = "Europe/Berlin";
-    language = "en_DK.UTF-8";
-    units = "en_DK.UTF-8";
-    layout = "de";
-  };
+  time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "en_DK.UTF-8";
+  services.xserver.xkb.layout = "de";
   services.kanata.enable = true;
 
   # Desktop
