@@ -1,15 +1,13 @@
 {
-  lib,
   pkgs,
   inputs,
   ...
-}:
-with lib; let
+}: let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
 in {
   config.programs.spicetify = {
-    enabledCustomApps = with spicePkgs.apps; [
-      marketplace
+    enabledCustomApps = [
+      spicePkgs.apps.marketplace
     ];
   };
 }

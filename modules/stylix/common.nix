@@ -4,8 +4,9 @@
   pkgs,
   inputs,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkIf;
+
   cfg = config.stylix;
 in {
   config = mkIf cfg.enable {

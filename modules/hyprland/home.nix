@@ -4,9 +4,9 @@
   lib,
   ...
 }: let
-  cfg = config.wayland.windowManager.hyprland;
-
   inherit (lib) mkIf mkOption mkEnableOption types range mapAttrsToList;
+
+  cfg = config.wayland.windowManager.hyprland;
 
   workspaceToKey = ws:
     if ws == 10

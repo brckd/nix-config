@@ -5,6 +5,7 @@
 }: let
   inherit (builtins) attrNames concatStringsSep mapAttrs concatLists replaceStrings typeOf;
   inherit (lib) mkIf mapAttrsToList concatMapAttrs concatMapAttrsStringSep unique;
+
   cfg = config.services.kanata;
 
   tapTime = 300;

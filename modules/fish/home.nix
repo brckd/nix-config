@@ -2,8 +2,9 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkIf;
+
   cfg = config.programs.fish;
 in {
   config = mkIf cfg.enable {
@@ -11,6 +12,7 @@ in {
       interactiveShellInit = ''
         fish_vi_key_bindings
       '';
+
       shellAbbrs = {
         sh = "$SHELL";
         pg = "$PAGER";

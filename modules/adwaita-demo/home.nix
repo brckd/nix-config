@@ -4,13 +4,15 @@
   pkgs,
   ...
 }: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.programs.adwaita-demo;
 in {
   options.programs.adwaita-demo = {
-    enable = lib.mkEnableOption "Adwaita Demo";
+    enable = mkEnableOption "Adwaita Demo";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     home.packages = [pkgs.libadwaita.devdoc];
 
     xdg.desktopEntries.adwaitaDemo = {

@@ -6,6 +6,7 @@
   ...
 }: let
   inherit (lib) mkIf mkMerge;
+
   cfg = config.services.mithril-shell;
 in {
   imports = [inputs.mithril-shell.homeManagerModules.default];

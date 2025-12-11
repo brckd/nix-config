@@ -3,10 +3,14 @@
   pkgs,
   lib,
   ...
-}:
-with lib; let
+}: let
+  inherit (builtins) fromTOML readFile;
+  inherit (lib) mkIf;
+
   cfg = config.programs.starship;
-  loadPreset = name: with builtins; fromTOML (readFile "${pkgs.starship}/share/starship/presets/${name}.toml");
+
+  loadPreset = name: fromTOML (readFile "${pkgs.starship}/share/starship/presets/${name}.toml");
+
   plainTextSymbols = loadPreset "plain-text-symbols";
 in {
   config = mkIf cfg.enable {

@@ -3,8 +3,9 @@
   lib,
   inputs,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkIf;
+
   cfg = config.stylix;
 in {
   imports = [

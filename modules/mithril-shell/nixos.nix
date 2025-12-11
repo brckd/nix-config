@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption;
+
   cfg = config.services.mithril-shell;
 in {
   options.services.mithril-shell = {

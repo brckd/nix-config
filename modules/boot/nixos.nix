@@ -2,13 +2,15 @@
   config,
   lib,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf mkDefault;
+
   cfg = config.boot;
 in {
   options.boot = {
     silent = mkEnableOption "silent mode";
   };
+
   config = mkIf cfg.silent {
     boot = {
       # Enable "Silent Boot"

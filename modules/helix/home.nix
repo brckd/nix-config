@@ -4,9 +4,11 @@
   pkgs,
   ...
 }: let
+  inherit (lib) mkIf;
+
   cfg = config.programs.helix;
 in {
-  config = lib.mkIf cfg.enable {
+  config = mkIf cfg.enable {
     programs.helix = {
       settings = {
         editor = {

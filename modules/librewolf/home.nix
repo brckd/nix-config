@@ -4,10 +4,13 @@
   inputs,
   pkgs,
   ...
-}:
-with lib; let
+}: let
+  inherit (builtins) readFile;
+  inherit (lib) mkIf singleton;
+
   cfg = config.programs.librewolf;
-  firefox-addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
+
+  firefoxAddons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
 in {
   config = mkIf cfg.enable {
     programs.librewolf = {
@@ -16,10 +19,10 @@ in {
           name = "Default";
           extensions = {
             force = true;
-            packages = with firefox-addons; [
-              ublock-origin
-              bitwarden
-              darkreader
+            packages = [
+              firefoxAddons.ublock-origin
+              firefoxAddons.bitwarden
+              firefoxAddons.darkreader
             ];
           };
           search = {
@@ -309,7 +312,7 @@ in {
             "browser.toolbars.bookmarks.visibility" = "never";
 
             # UI customization
-            "browser.uiCustomization.state" = builtins.readFile ./toolbar.json;
+            "browser.uiCustomization.state" = readFile ./toolbar.json;
             "layers.acceleration.force-enabled" = true; # Rounded window corners on Wayland
 
             # Gnome Theme

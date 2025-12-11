@@ -3,13 +3,14 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkIf;
+
   cfg = config.services.xserver;
 in {
   config = mkIf cfg.enable {
-    services.xserver.excludePackages = with pkgs; [
-      xterm
+    services.xserver.excludePackages = [
+      pkgs.xterm
     ];
   };
 }

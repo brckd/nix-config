@@ -3,6 +3,7 @@
   lib,
   ...
 }: let
+  inherit (builtins) readFile;
   inherit (lib) mkIf;
 
   cfg = config.programs.anyrun;
@@ -19,7 +20,7 @@ in {
         ];
       };
 
-      extraCss = builtins.readFile ./style.css;
+      extraCss = readFile ./style.css;
     };
   };
 }

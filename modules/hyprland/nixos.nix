@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.programs.hyprland;
-
   inherit (lib) mkIf;
+
+  cfg = config.programs.hyprland;
 in {
   config = mkIf cfg.enable {
     programs.hyprland.withUWSM = true;

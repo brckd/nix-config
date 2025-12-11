@@ -3,15 +3,18 @@
   lib,
   pkgs,
   ...
-}:
-with lib; let
+}: let
+  inherit (lib) mkEnableOption mkIf;
+
   cfg = config.programs.nautilus;
 in {
   imports = [./extensions];
+
   options.programs.nautilus = {
     enable = mkEnableOption "Nautilus";
   };
+
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [nautilus];
+    environment.systemPackages = [pkgs.nautilus];
   };
 }
