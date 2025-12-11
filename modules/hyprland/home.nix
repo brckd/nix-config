@@ -78,7 +78,7 @@ in {
       systemd.enable = false;
       settings = {
         input = {
-          kb_layout = "de";
+          kb_layout = config.home.keyboard.layout;
           touchpad.natural_scroll = true;
         };
         monitor = ",highres,auto,1";

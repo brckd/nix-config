@@ -7,6 +7,7 @@
     stateVersion = "25.11";
     username = "personal";
     homeDirectory = "/home/personal";
+    keyboard.layout = "de";
   };
 
   programs.home-manager.enable = true;

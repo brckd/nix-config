@@ -1,8 +1,4 @@
-{
-  self,
-  pkgs,
-  ...
-}: {
+{self, ...}: {
   imports = [self.homeModules.all];
 
   nixpkgs.config.allowUnfree = true;
@@ -11,6 +7,7 @@
     stateVersion = "25.11";
     username = "bricked";
     homeDirectory = "/home/bricked";
+    keyboard.layout = "de";
   };
 
   programs.home-manager.enable = true;
