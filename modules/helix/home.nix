@@ -50,9 +50,9 @@ in {
 
           # Rust language server
           rust-analyzer = {
-            command = "${pkgs.rust-analyzer}/bin/rust-analyzer";
+            command = "rust-analyzer";
             # Rust linter
-            config.check.command = "${pkgs.clippy}/bin/clippy";
+            config.check.command = "clippy";
           };
 
           # TOML language server
