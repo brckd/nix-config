@@ -83,9 +83,15 @@ in {
 
   services.flatpak.enable = true;
   environment.systemPackages = [
-    fenixPkgs.rust-docs
+    (fenixPkgs.withComponents [
+      "cargo"
+      "clippy"
+      "rustfmt"
+      "rust-analyzer"
+      "rust-docs"
+      "rust-src"
+    ])
     pkgs.bacon
-    pkgs.cargo
     pkgs.cargo-flamegraph
     pkgs.eza
     pkgs.fd
@@ -97,7 +103,6 @@ in {
     pkgs.nurl
     pkgs.nix-melt
     pkgs.ripgrep
-    pkgs.rustfmt
     pkgs.sd
     pkgs.tealdeer
     pkgs.ungoogled-chromium
