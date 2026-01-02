@@ -18,7 +18,7 @@ in {
     bricked = {
       isNormalUser = true;
       description = "Bricked";
-      extraGroups = ["networkmanager" "wheel"];
+      extraGroups = ["networkmanager" "wheel" "adbusers"];
     };
     personal = {
       isNormalUser = true;
@@ -81,6 +81,8 @@ in {
     package = pkgs.mullvad-vpn;
   };
 
+  programs.adb.enable = true;
+
   services.flatpak.enable = true;
   environment.systemPackages = [
     (fenixPkgs.withComponents [
@@ -91,13 +93,16 @@ in {
       "rust-docs"
       "rust-src"
     ])
+    pkgs.android-translation-layer
     pkgs.bacon
     pkgs.cargo-flamegraph
+    pkgs.cutter
     pkgs.eza
     pkgs.fd
     pkgs.gcc
     pkgs.git
     pkgs.hyperfine
+    pkgs.icon-library
     pkgs.jaq
     pkgs.moor
     pkgs.nurl
