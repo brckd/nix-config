@@ -1,10 +1,13 @@
 {
   config,
   lib,
+  pkgs,
+  self,
   ...
 }: let
   inherit (builtins) readFile;
   inherit (lib) mkIf;
+  inherit (self.legacyPackages.${pkgs.stdenv.hostPlatform.system}) anyrunPlugins;
 
   cfg = config.programs.anyrun;
 in {
@@ -14,9 +17,10 @@ in {
         closeOnClick = true;
 
         plugins = [
+          "${anyrunPlugins.power}/lib/libpower.so"
           "${cfg.package}/lib/libapplications.so"
-          "${cfg.package}/lib/libsymbols.so"
           "${cfg.package}/lib/librink.so"
+          "${cfg.package}/lib/libsymbols.so"
         ];
       };
 
