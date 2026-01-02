@@ -40,7 +40,7 @@ in {
             {
               label = "Restart";
               command = "systemctl reboot";
-              confirmation = "Are you sure you want to restart the computer?";
+              confirmation = "Are you sure you want to restart the device?";
             }
             {
               label = "Restart to UEFI";
@@ -50,7 +50,7 @@ in {
             {
               label = "Power Off";
               command = "systemctl poweroff";
-              confirmation = "Are you sure you want to power off the computer?";
+              confirmation = "Are you sure you want to power off the device?";
             }
             {
               label = "Log Out";
