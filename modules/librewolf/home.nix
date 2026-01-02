@@ -111,7 +111,7 @@ in {
                 definedAliases = ["@nixmanual" "@nxm"];
               };
               "Nix Packages" = {
-                urls = singleton {template = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";};
+                urls = singleton {template = "https://search.nixos.org/packages?query={searchTerms}";};
                 icon = "https://search.nixos.org/favicon.png";
                 definedAliases = ["@nixpackages" "@nxp"];
               };
