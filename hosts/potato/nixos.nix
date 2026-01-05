@@ -10,7 +10,7 @@ in {
 
   # System
   system.stateVersion = "25.11";
-  networking.hostName = "laptop";
+  networking.hostName = "potato";
   nixpkgs.config.allowUnfree = true;
 
   # Users
