@@ -6,7 +6,11 @@
 }: let
   fenixPkgs = inputs.fenix.packages.${pkgs.stdenv.hostPlatform.system}.stable;
 in {
-  imports = [self.nixosModules.all ./hardware.nix ./disko.nix];
+  imports = [
+    self.nixosModules.all
+    ./hardware.nix
+    ./disko.nix
+  ];
 
   # System
   system.stateVersion = "25.11";
@@ -72,6 +76,7 @@ in {
   services.mithril-shell.enable = true;
 
   # Shell
+  console.useXkbConfig = true;
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
