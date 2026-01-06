@@ -10,7 +10,9 @@
       inherit (tree) paths evalAll modules;
 
       systems = import inputs.systems;
-      tree = import ./lib/tree/default.nix {inherit lib self inputs systems;};
+      tree = import ./lib/tree/default.nix {
+        inherit lib self inputs systems;
+      };
     in {
       imports = [
         inputs.treefmt-nix.flakeModule
@@ -72,25 +74,23 @@
   };
 
   inputs = {
-    # Package reposities
+    # Nix
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
 
-    # Systems
+    systems.url = "github:nix-systems/default-linux";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Flake Framework
+    # Flakes
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
     };
 
-    # Development
     flake-compat.url = "github:edolstra/flake-compat";
-
-    systems.url = "github:nix-systems/default-linux";
 
     flake-utils = {
       url = "github:numtide/flake-utils";
@@ -102,10 +102,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Hooks
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.flake-compat.follows = "flake-compat";
       inputs.gitignore.follows = "gitignore";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -114,13 +120,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Formatter
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Theming
+    # Preferences
     stylix = {
       url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -128,34 +128,8 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    mithril-shell = {
-      url = "github:bricked-contrib/mithril-shell";
-      # Don't override nixpkgs input as advised in
-      # https://andreashgk.github.io/mithril-shell/getting-started/installation#setup
-      inputs.home-manager.follows = "home-manager";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
-    # Customization
     nixdg-ninja = {
       url = "github:notashelf/nixdg-ninja";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Programs
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-    };
-
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    fenix = {
-      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -171,6 +145,31 @@
       inputs.flake-compat.follows = "flake-compat";
       inputs.flake-parts.follows = "flake-parts";
       inputs.pre-commit-hooks-nix.follows = "git-hooks";
+    };
+
+    # Programs
+    mithril-shell = {
+      url = "github:bricked-contrib/mithril-shell";
+      # Don't override nixpkgs input as advised in
+      # https://andreashgk.github.io/mithril-shell/getting-started/installation#setup
+      inputs.home-manager.follows = "home-manager";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
+
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # Assets
