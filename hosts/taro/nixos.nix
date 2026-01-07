@@ -8,6 +8,7 @@
   inherit (lib) singleton;
 
   hostName = "taro";
+
   # IPv6 proxy. See https://nat64.xyz/
   nameservers = [
     # See https://nat64.net/
@@ -18,18 +19,23 @@
     "2001:67c:2960::64"
     "2001:67c:2960::6464"
   ];
-  interface = "eth0";
+
   ssh.port = 1450;
 
-  public = rec {
-    network = "2a01:4f8:1c1f:9442";
-    address = "${network}::1";
-    subnet = 64;
-  };
+  networks = {
+    public = rec {
+      interface = "enp1s0";
+      prefix = "2a01:4f8:1c1f:9442";
+      gateway = "${prefix}::1";
+      prefixLength = 64;
+      subnet = "${gateway}/${toString prefixLength}";
+    };
 
-  local = rec {
-    network = "fe80";
-    address = "${network}::1";
+    local = rec {
+      prefix = "fe80";
+      gateway = "${prefix}::1";
+      prefixLength = 64;
+    };
   };
 in {
   imports = [
@@ -86,17 +92,22 @@ in {
   # Networking
   networking = {
     inherit hostName nameservers;
+    useDHCP = false;
+  };
 
-    interfaces.${interface} = {
-      ipv6.addresses = singleton {
-        inherit (public) address;
-        prefixLength = public.subnet;
+  systemd.network = {
+    enable = true;
+
+    networks = {
+      "10-${networks.public.interface}" = {
+        matchConfig.Name = networks.public.interface;
+        linkConfig.RequiredForOnline = "routable";
+
+        address = [networks.public.subnet];
+        routes = singleton {
+          Gateway = networks.local.gateway;
+        };
       };
-    };
-
-    defaultGateway6 = {
-      inherit (local) address;
-      inherit interface;
     };
   };
 
