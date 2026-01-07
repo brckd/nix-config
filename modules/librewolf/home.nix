@@ -56,7 +56,7 @@ in {
                 definedAliases = ["@codeberg" "@cb"];
               };
               "Fancade Wiki" = {
-                urls = singleton {template = "https://www.fancade.com/wiki/gollum/search?q={searchTerms}";};
+                urls = singleton {template = "https://www.fancade.com/wiki/Special:Search?search={searchTerms}";};
                 icon = "https://www.fancade.com/favicon.ico";
                 definedAliases = ["@fancadewiki" "@fcw"];
               };
@@ -121,7 +121,7 @@ in {
                 definedAliases = ["@nixosoptions" "@noo"];
               };
               "NixOS Wiki" = {
-                urls = singleton {template = "https://wiki.nixos.org/w/index.php?search={searchTerms}";};
+                urls = singleton {template = "https://wiki.nixos.org/wiki/Special:Search?search={searchTerms}";};
                 icon = "https://wiki.nixos.org/favicon.ico";
                 definedAliases = ["@nixoswiki" "@now"];
               };
