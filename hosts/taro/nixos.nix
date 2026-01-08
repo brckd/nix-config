@@ -92,6 +92,7 @@ in {
   # Networking
   networking = {
     inherit hostName nameservers;
+    nftables.enable = true;
     useDHCP = false;
   };
 
