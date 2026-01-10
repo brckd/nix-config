@@ -25,11 +25,11 @@ jobs:
         with:
           name: bricked
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - name: Build NixOS configuration for desktop
+      - name: Build NixOS configuration for Potato
         run: >
           nix run github:Mic92/nix-fast-build --
           --no-nom
-          --flake ".#legacyPackages.x86_64-linux.nixosConfigurations.laptop.config.system.build.toplevel"
+          --flake ".#legacyPackages.x86_64-linux.nixosConfigurations.potato.config.system.build.toplevel"
 
   cache_home:
     runs-on: ubuntu-latest
