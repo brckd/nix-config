@@ -172,6 +172,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-nspawn = {
+      url = "github:fpletz/nixos-nspawn/946929c07e5b3f4500d8feede0759494b33de884";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+      inputs.git-hooks.follows = "git-hooks";
+    };
+
     # Assets
     wallpaper = {
       url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/40912e6418737e93b59a38bcf189270cbf26656d/pink-clouds.jpg";

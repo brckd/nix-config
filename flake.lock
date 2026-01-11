@@ -416,6 +416,36 @@
         "type": "github"
       }
     },
+    "nixos-nspawn": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "git-hooks": [
+          "git-hooks"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764591654,
+        "narHash": "sha256-lSC5GPSTlmVCQJbXzv7hb9v2TFhizSp0POZCmMKegFk=",
+        "owner": "fpletz",
+        "repo": "nixos-nspawn",
+        "rev": "946929c07e5b3f4500d8feede0759494b33de884",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fpletz",
+        "repo": "nixos-nspawn",
+        "rev": "946929c07e5b3f4500d8feede0759494b33de884",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1761907660,
@@ -488,6 +518,7 @@
         "lanzaboote": "lanzaboote",
         "mithril-shell": "mithril-shell",
         "nixdg-ninja": "nixdg-ninja",
+        "nixos-nspawn": "nixos-nspawn",
         "nixpkgs": "nixpkgs_2",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
