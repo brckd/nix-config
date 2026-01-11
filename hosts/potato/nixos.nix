@@ -22,7 +22,7 @@ in {
     bricked = {
       isNormalUser = true;
       description = "Bricked";
-      extraGroups = ["networkmanager" "wheel" "adbusers"];
+      extraGroups = ["networkmanager" "wheel"];
     };
     personal = {
       isNormalUser = true;
@@ -80,14 +80,6 @@ in {
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
-  # Networking
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
-
-  programs.adb.enable = true;
-
   services.flatpak.enable = true;
   environment.systemPackages = [
     (fenixPkgs.withComponents [
@@ -98,10 +90,8 @@ in {
       "rust-docs"
       "rust-src"
     ])
-    pkgs.android-translation-layer
     pkgs.bacon
     pkgs.cargo-flamegraph
-    pkgs.cutter
     pkgs.eza
     pkgs.fd
     pkgs.gcc
@@ -112,6 +102,7 @@ in {
     pkgs.moor
     pkgs.nurl
     pkgs.nix-melt
+    pkgs.protonvpn-gui
     pkgs.ripgrep
     pkgs.sd
     pkgs.tealdeer
