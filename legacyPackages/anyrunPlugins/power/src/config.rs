@@ -2,12 +2,16 @@ use serde::Deserialize;
 
 #[derive(Debug, Deserialize)]
 pub struct Config {
+    pub prefix: String,
+    pub max_entries: usize,
     pub actions: Vec<Action>,
 }
 
 impl Default for Config {
     fn default() -> Self {
         Config {
+            prefix: ":pw".to_string(),
+            max_entries: 3,
             actions: vec![
                 Action {
                     title: "Suspend".to_string(),
@@ -20,6 +24,7 @@ impl Default for Config {
                     icon: Some("system-suspend".to_string()),
                     command: "systemctl".to_string(),
                     args: vec!["suspend".to_string()],
+                    confirm: false,
                 },
                 Action {
                     title: "Restart".to_string(),
@@ -28,20 +33,7 @@ impl Default for Config {
                     icon: Some("system-reboot".to_string()),
                     command: "systemctl".to_string(),
                     args: vec!["reboot".to_string()],
-                },
-                Action {
-                    title: "Restart to UEFI".to_string(),
-                    description: Some("Restart and enter the UEFI".to_string()),
-                    keywords: vec![
-                        "restart to".to_string(),
-                        "reboot to".to_string(),
-                        "uefi".to_string(),
-                        "bios".to_string(),
-                        "firmware setup".to_string(),
-                    ],
-                    icon: Some("preferences-system".to_string()),
-                    command: "systemctl".to_string(),
-                    args: vec!["reboot".to_string(), "--firmware-setup".to_string()],
+                    confirm: true,
                 },
                 Action {
                     title: "Power off".to_string(),
@@ -54,22 +46,7 @@ impl Default for Config {
                     icon: Some("system-shutdown".to_string()),
                     command: "systemctl".to_string(),
                     args: vec!["poweroff".to_string()],
-                },
-                Action {
-                    title: "Log out".to_string(),
-                    description: Some("Log out of this session".to_string()),
-                    keywords: vec!["log out".to_string()],
-                    icon: Some("system-log-out".to_string()),
-                    command: "uwsm".to_string(),
-                    args: vec!["stop".to_string()],
-                },
-                Action {
-                    title: "Lock screen".to_string(),
-                    description: Some("Lock the screen".to_string()),
-                    keywords: vec!["lock screen".to_string()],
-                    icon: Some("system-lock-screen".to_string()),
-                    command: "hyprlock".to_string(),
-                    args: vec![],
+                    confirm: true,
                 },
             ],
         }
@@ -84,5 +61,5 @@ pub struct Action {
     pub icon: Option<String>,
     pub command: String,
     pub args: Vec<String>,
+    pub confirm: bool,
 }
-
