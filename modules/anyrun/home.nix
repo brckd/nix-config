@@ -3,6 +3,7 @@
   lib,
   pkgs,
   self,
+  inputs,
   ...
 }: let
   inherit (builtins) readFile;
@@ -25,6 +26,7 @@ in {
       };
 
       extraCss = readFile ./style.css;
+      extraConfigFiles."power.ron".source = ./power.ron;
     };
   };
 }
