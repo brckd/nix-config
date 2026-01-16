@@ -42,10 +42,11 @@
         treefmt.config = {
           projectRootFile = "flake.nix";
           programs = {
-            statix.enable = true;
+            actionlint.enable = true;
             alejandra.enable = true;
             prettier.enable = true;
-            actionlint.enable = true;
+            rustfmt.enable = true;
+            statix.enable = true;
           };
           flakeCheck = false;
         };
