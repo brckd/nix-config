@@ -46,6 +46,8 @@ in {
     };
   };
 
+  environment.etc."nixos".source = self.outPath;
+
   # Boot
   boot = {
     loader = {
