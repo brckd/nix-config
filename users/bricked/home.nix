@@ -30,13 +30,13 @@
   programs.git = {
     enable = true;
     settings.user = {
-      name = "bricked";
-      email = "spider@bricked.dev";
+      name = "Bricked";
+      email = "rocket@bricked.dev";
     };
     signing = {
       signByDefault = true;
       format = "openpgp";
-      key = "1EA6 A3AC FCAF D957 F6BC 727B B125 7D48 58CF 3348";
+      key = "A522 E927 3786 E55C 68FA 93E0 B84C 306C 3E35 AB5B";
     };
   };
 
