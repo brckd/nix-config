@@ -44,68 +44,13 @@ touch $config_dir/home.nix
 </TabItem>
 </Tabs>
 
-## Initial build
-
-The initial build may differ, because some missing dependencies need to be
-substituted.
-
-<Tabs syncKey="nix-environment">
-<TabItem label="NixOS">
-
-<Tabs syncKey="flakes-enabled">
-<TabItem label="Flakes enabled">
-
-```sh
-nix run nixpkgs#nh os switch .
-```
-
-</TabItem>
-<TabItem label="Flakes disabled">
-
-```sh
-nix --experimental-features 'nix-command flakes' run nixpkgs#nh os switch .
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-<TabItem label="Nix-on-Droid">
-
-```sh
-nix-on-droid switch --flake .
-```
-
-</TabItem>
-<TabItem label="Home Manager">
-
-<Tabs syncKey="flakes-enabled">
-<TabItem label="Flakes enabled">
-
-```sh
-nix run nixpkgs#nh home switch .
-```
-
-</TabItem>
-<TabItem label="Flakes disabled">
-
-```sh
-nix --experimental-features 'nix-command flakes' run nixpkgs#nh home switch .
-```
-
-</TabItem>
-</Tabs>
-
-</TabItem>
-</Tabs>
-
-## Subsequent builds
+## Install
 
 <Tabs syncKey="nix-environment">
 <TabItem label="NixOS">
 
 ```sh
-nh os switch .
+nixos-rebuild switch --root --flake .
 ```
 
 </TabItem>
@@ -119,7 +64,7 @@ nix-on-droid switch --flake .
 <TabItem label="Home Manager">
 
 ```sh
-nh home switch .
+home-manager switch --flake .
 ```
 
 </TabItem>
