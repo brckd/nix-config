@@ -56,8 +56,6 @@ in {
         nf = "nix flake";
         nfm = "nix flake metadata";
         nfu = "nix flake update";
-        nhh = "nh home switch .";
-        nho = "nh os switch .";
         mkp = "mkdir --parent";
         cpr = "cp --recursive";
         b = "bun";
