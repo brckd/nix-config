@@ -44,6 +44,7 @@ in {
       pkgs.ghex # Hex editor
       pkgs.grim # Screenshot application
       pkgs.handbrake # Video converter
+      pkgs.inkscape # Vector graphics editor
       pkgs.inspector # System information viewer
       pkgs.libreoffice # Office application
       pkgs.loupe # Image viewer
