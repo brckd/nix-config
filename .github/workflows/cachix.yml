@@ -31,6 +31,28 @@ jobs:
           --no-nom
           --flake ".#legacyPackages.x86_64-linux.nixosConfigurations.potato.config.system.build.toplevel"
 
+  cache_generator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v5
+      - name: Claim disk space
+        uses: wimpysworld/nothing-but-nix@main
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: "${{ env.EXTRA_NIX_CONFIG }}"
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: bricked
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Build NixOS generator for Bricked on Potato
+        run: >
+          nix run github:Mic92/nix-fast-build --
+          --no-nom
+          --flake ".#legacyPackages.x86_64-linux.nixosGenerators.bricked@potato.install-iso"
+
   cache_home:
     runs-on: ubuntu-latest
     steps:
