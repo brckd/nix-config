@@ -24,6 +24,7 @@
   programs.fish.enable = true;
   programs.gpg.enable = true;
   programs.starship.enable = true;
+  programs.tealdeer.enable = true;
   programs.zoxide.enable = true;
 
   # Git
