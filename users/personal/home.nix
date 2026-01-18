@@ -1,7 +1,12 @@
 {self, ...}: {
   imports = [self.homeModules.all];
 
+  # Nix
   nixpkgs.config.allowUnfree = true;
+  programs.nix-your-shell.enable = true;
+
+  # Home
+  programs.home-manager.enable = true;
 
   home = {
     stateVersion = "25.11";
@@ -10,20 +15,16 @@
     keyboard.layout = "de";
   };
 
-  programs.home-manager.enable = true;
-
   # Theming
   stylix.enable = true;
   services.mithril-shell.enable = true;
 
-  # Terminal
+  # Shell
   programs.fish.enable = true;
-  programs.starship.enable = true;
   programs.direnv.enable = true;
-  programs.ghostty.enable = true;
   programs.git.enable = true;
   programs.gpg.enable = true;
-  programs.gh.enable = true;
+  programs.starship.enable = true;
   programs.zoxide.enable = true;
 
   # Editor
@@ -33,6 +34,7 @@
   };
 
   # Apps
+  programs.ghostty.enable = true;
   programs.librewolf.enable = true;
   programs.spicetify.enable = true;
 }
