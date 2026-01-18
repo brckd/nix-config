@@ -91,10 +91,17 @@ in {
 
   # Shell
   console.useXkbConfig = true;
+  programs.direnv.enable = true;
   programs.fish.enable = true;
+  programs.git.enable = true;
+  programs.starship.enable = true;
+  programs.zoxide.enable = true;
   users.defaultUserShell = pkgs.fish;
 
   # Programs
+  programs.spicetify.enable = true;
+  programs.adwaita-demo.enable = true;
+
   environment.systemPackages = [
     diskoPkgs.disko
     (fenixPkgs.withComponents [
@@ -110,7 +117,7 @@ in {
     pkgs.eza
     pkgs.fd
     pkgs.gcc
-    pkgs.git
+    pkgs.home-manager
     pkgs.hyperfine
     pkgs.icon-library
     pkgs.jaq

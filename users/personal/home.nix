@@ -21,11 +21,8 @@
 
   # Shell
   programs.fish.enable = true;
-  programs.direnv.enable = true;
   programs.git.enable = true;
   programs.gpg.enable = true;
-  programs.starship.enable = true;
-  programs.zoxide.enable = true;
 
   # Editor
   programs.helix = {
@@ -36,5 +33,4 @@
   # Apps
   programs.ghostty.enable = true;
   programs.librewolf.enable = true;
-  programs.spicetify.enable = true;
 }

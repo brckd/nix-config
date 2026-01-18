@@ -42,11 +42,13 @@ in {
       pkgs.gnome-maps # Map application
       pkgs.gnome-weather # Weather application
       pkgs.ghex # Hex editor
+      pkgs.ghostty # Terminal emulator
       pkgs.grim # Screenshot application
       pkgs.handbrake # Video converter
       pkgs.inkscape # Vector graphics editor
       pkgs.inspector # System information viewer
       pkgs.libreoffice # Office application
+      pkgs.librewolf # Web browser
       pkgs.loupe # Image viewer
       pkgs.mission-center # System monitor
       pkgs.nautilus # File manager
