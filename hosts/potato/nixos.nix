@@ -46,8 +46,6 @@ in {
     };
   };
 
-  programs.nh.enable = true;
-
   # Boot
   boot = {
     loader = {
