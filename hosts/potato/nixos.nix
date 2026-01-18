@@ -13,9 +13,7 @@ in {
   ];
 
   # System
-  system.stateVersion = "25.11";
   networking.hostName = "potato";
-  nixpkgs.config.allowUnfree = true;
 
   # Users
   users.users = {
@@ -32,9 +30,10 @@ in {
   };
 
   # Nix
+  system.stateVersion = "25.11";
+  nixpkgs.config.allowUnfree = true;
+
   nix = {
-    package = pkgs.nix;
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
     settings = {
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["@wheel"];
@@ -44,6 +43,7 @@ in {
       dates = "weekly";
     };
   };
+
   programs.nh.enable = true;
 
   # Boot
@@ -55,17 +55,22 @@ in {
       };
       efi.canTouchEfiVariables = true;
     };
+
     initrd.systemd = {
       enable = true;
       tpm2.enable = false;
     };
+
     plymouth.enable = true;
     silent = true;
   };
+
   systemd.tpm2.enable = false;
 
-  # Preferences
+  # Theming
   stylix.enable = true;
+
+  # Locale
   time.timeZone = "Europe/Berlin";
   i18n.defaultLocale = "en_DK.UTF-8";
   services.xserver.xkb.layout = "de";
@@ -80,7 +85,7 @@ in {
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
-  services.flatpak.enable = true;
+  # Programs
   environment.systemPackages = [
     (fenixPkgs.withComponents [
       "cargo"
