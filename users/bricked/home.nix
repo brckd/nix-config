@@ -1,7 +1,12 @@
 {self, ...}: {
   imports = [self.homeModules.all];
 
+  # Nix
   nixpkgs.config.allowUnfree = true;
+  programs.nix-your-shell.enable = true;
+
+  # Home
+  programs.home-manager.enable = true;
 
   home = {
     stateVersion = "25.11";
@@ -10,17 +15,18 @@
     keyboard.layout = "de";
   };
 
-  programs.home-manager.enable = true;
-
   # Theming
   stylix.enable = true;
   services.mithril-shell.enable = true;
 
-  # Terminal
-  programs.fish.enable = true;
-  programs.starship.enable = true;
+  # Shell
   programs.direnv.enable = true;
-  programs.ghostty.enable = true;
+  programs.fish.enable = true;
+  programs.gpg.enable = true;
+  programs.starship.enable = true;
+  programs.zoxide.enable = true;
+
+  # Git
   programs.git = {
     enable = true;
     settings.user = {
@@ -33,11 +39,6 @@
       key = "1EA6 A3AC FCAF D957 F6BC 727B B125 7D48 58CF 3348";
     };
   };
-  services.gnome-keyring.enable = true;
-  programs.gpg.enable = true;
-  programs.gh.enable = true;
-  programs.zoxide.enable = true;
-  programs.nix-your-shell.enable = true;
 
   # Editor
   programs.helix = {
@@ -46,7 +47,8 @@
   };
 
   # Apps
+  programs.adwaita-demo.enable = true;
+  programs.ghostty.enable = true;
   programs.librewolf.enable = true;
   programs.spicetify.enable = true;
-  programs.adwaita-demo.enable = true;
 }
