@@ -49,8 +49,6 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    nixPath = ["nixpkgs=${inputs.nixpkgs}"];
-
     settings = {
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["@wheel"];
@@ -137,6 +135,7 @@ in {
   programs.fish.enable = true;
   users.defaultUserShell = pkgs.fish;
 
+  # Programs
   environment.systemPackages = [
     pkgs.git
     pkgs.curl
