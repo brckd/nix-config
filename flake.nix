@@ -103,6 +103,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Hooks
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
@@ -135,11 +145,6 @@
     };
 
     # Boot
-    disko = {
-      url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
