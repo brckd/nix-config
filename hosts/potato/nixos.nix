@@ -4,7 +4,9 @@
   self,
   ...
 }: let
-  fenixPkgs = inputs.fenix.packages.${pkgs.stdenv.hostPlatform.system}.stable;
+  inherit (pkgs.stdenv.hostPlatform) system;
+  diskoPkgs = inputs.disko.packages.${system};
+  fenixPkgs = inputs.fenix.packages.${system}.stable;
 in {
   imports = [
     self.nixosModules.all
@@ -87,6 +89,7 @@ in {
 
   # Programs
   environment.systemPackages = [
+    diskoPkgs.disko
     (fenixPkgs.withComponents [
       "cargo"
       "clippy"
