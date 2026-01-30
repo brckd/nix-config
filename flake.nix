@@ -172,6 +172,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hytale-launcher-nix = {
+      url = "github:JPyke3/hytale-launcher-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     # Assets
     wallpaper = {
       url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/40912e6418737e93b59a38bcf189270cbf26656d/pink-clouds.jpg";
