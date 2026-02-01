@@ -91,12 +91,11 @@ in {
 
   # Shell
   console.useXkbConfig = true;
-  programs.direnv.enable = true;
   programs.fish.enable = true;
-  programs.git.enable = true;
-  programs.starship.enable = true;
-  programs.zoxide.enable = true;
-  users.defaultUserShell = pkgs.fish;
+  programs.nushell = {
+    enable = true;
+    defaultUserShell = true;
+  };
 
   # Programs
   programs.spicetify.enable = true;
@@ -115,7 +114,6 @@ in {
     hytalePkgs.hytale-launcher
     pkgs.bacon
     pkgs.cargo-flamegraph
-    pkgs.eza
     pkgs.fd
     pkgs.gcc
     pkgs.home-manager
@@ -128,7 +126,6 @@ in {
     pkgs.protonvpn-gui
     pkgs.ripgrep
     pkgs.sd
-    pkgs.tealdeer
     pkgs.ungoogled-chromium
     pkgs.vesktop
     pkgs.xh

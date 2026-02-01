@@ -20,9 +20,14 @@
   services.mithril-shell.enable = true;
 
   # Shell
+  programs.direnv.enable = true;
+  programs.eza.enable = true;
   programs.fish.enable = true;
-  programs.git.enable = true;
   programs.gpg.enable = true;
+  programs.nushell.enable = true;
+  programs.starship.enable = true;
+  programs.tealdeer.enable = true;
+  programs.zoxide.enable = true;
 
   # Editor
   programs.helix = {
