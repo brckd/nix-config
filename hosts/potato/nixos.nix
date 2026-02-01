@@ -82,7 +82,6 @@ in {
 
   # Locale
   time.timeZone = "Europe/Berlin";
-  i18n.defaultLocale = "en_DK.UTF-8";
   services.xserver.xkb.layout = "de";
   services.kanata.enable = true;
 
