@@ -83,7 +83,7 @@ in {
       isNormalUser = true;
       extraGroups = ["wheel" "networkmanager"];
       initialHashedPassword = "$y$j9T$S01boWs/H/ohg3vJgwD/n/$zariwkA3yVRBznI01dOZfywOgsjZgsQ35bovfiSglK8";
-      openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID2FpY9QaN8s4uKrE0UZvMvFqnY10a3MmL5zipuPI7wj"];
+      openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGPmvrI3zA1/iKiJrjcHBgHvsoLJ3xzuE5WKx+2rTHxW"];
     };
   };
 
