@@ -22,13 +22,14 @@ in {
       };
     }
     (mkIf cfg.defaultUserShell {
-      programs.bash.interactiveShellInit = ''
-        if ! [ "$TERM" = "dumb" ] && [ -z "$BASH_EXECUTION_STRING" ]; then
-          exec ${getExe cfg.package}
-        fi
-      '';
-
-      users.defaultUserShell = pkgs.bash;
+      users.defaultUserShell = pkgs.dash;
+      environment.sessionVariables.ENV =
+        pkgs.writeShellScript "dashInit"
+        ''
+          if ! [ "$TERM" = "dumb" ]; then
+            exec ${getExe cfg.package}
+          fi
+        '';
     })
   ]);
 }
