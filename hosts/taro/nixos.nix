@@ -1,13 +1,17 @@
 {
-  inputs,
   lib,
   pkgs,
   self,
   ...
 }: let
+  inherit (builtins) concatStringsSep;
   inherit (lib) singleton;
 
+  mkSubnet = gateway: prefixLength: "${gateway}/${toString prefixLength}";
+
   hostName = "taro";
+  ssh.ports = [1450];
+  acme.email = concatStringsSep "i" ["sapl" "ng@br" "cked.dev"];
 
   # IPv6 proxy using https://nat64.net/
   # Hostnames are resolved syntax for DNS over TLS
@@ -17,21 +21,39 @@
     "2a00:1098:2c::1#dot.nat64.dk"
   ];
 
-  ssh.port = 1450;
-
   networks = {
     public = rec {
       interface = "enp1s0";
       prefix = "2a01:4f8:1c1f:9442";
-      gateway = "${prefix}::1";
       prefixLength = 64;
-      subnet = "${gateway}/${toString prefixLength}";
+      gateway = rec {
+        address = "${prefix}::1";
+        subnet = mkSubnet address prefixLength;
+      };
     };
 
     local = rec {
       prefix = "fe80";
-      gateway = "${prefix}::1";
       prefixLength = 64;
+      gateway = rec {
+        address = "${prefix}::1";
+        subnet = mkSubnet address prefixLength;
+      };
+    };
+
+    crop = rec {
+      prefix = "${networks.public.prefix}:123";
+      prefixLength = 96;
+
+      gateway = rec {
+        address = "${prefix}::1";
+        subnet = mkSubnet address prefixLength;
+      };
+
+      app = rec {
+        address = "${prefix}::2";
+        subnet = mkSubnet address prefixLength;
+      };
     };
   };
 in {
@@ -84,10 +106,48 @@ in {
     };
   };
 
+  # Containers
+  virtualisation.nspawn.containers = {
+    crop = {
+      autoStart = true;
+
+      network.veth.config = {
+        host = {
+          networkConfig = {
+            DHCPServer = false;
+            Address = [networks.crop.gateway.subnet];
+          };
+        };
+        container = {
+          networkConfig = {
+            DHCP = false;
+            Address = [networks.crop.app.subnet];
+            Gateway = [networks.crop.gateway.address];
+          };
+        };
+      };
+
+      config = {
+        config = {
+          system.stateVersion = "25.11";
+          networking.firewall.allowedTCPPorts = [80 443];
+
+          services.caddy = {
+            inherit (acme) email;
+            enable = true;
+            virtualHosts."crop.bricked.dev".extraConfig = ''
+              respond "Hello, world!"
+            '';
+          };
+        };
+      };
+    };
+  };
+
   # Networking
   networking = {
     inherit hostName nameservers;
-    nftables.enable = true;
+    useNetworkd = true;
     useDHCP = false;
   };
 
@@ -106,10 +166,11 @@ in {
       "10-${networks.public.interface}" = {
         matchConfig.Name = networks.public.interface;
         linkConfig.RequiredForOnline = "routable";
+        DHCP = "no";
 
-        address = [networks.public.subnet];
+        address = [networks.public.gateway.subnet];
         routes = singleton {
-          Gateway = networks.local.gateway;
+          Gateway = networks.local.gateway.address;
         };
       };
     };
@@ -117,7 +178,7 @@ in {
 
   services.openssh = {
     enable = true;
-    ports = [ssh.port];
+    inherit (ssh) ports;
 
     settings = {
       PasswordAuthentication = false;
