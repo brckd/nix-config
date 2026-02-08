@@ -9,15 +9,12 @@
 
   hostName = "taro";
 
-  # IPv6 proxy. See https://nat64.xyz/
+  # IPv6 proxy using https://nat64.net/
+  # Hostnames are resolved syntax for DNS over TLS
   nameservers = [
-    # See https://nat64.net/
-    "2a01:4f8:c2c:123f::1"
-    "2a00:1098:2b::1"
-
-    # See https://level66.services/services/nat64/
-    "2001:67c:2960::64"
-    "2001:67c:2960::6464"
+    "2a01:4f8:c2c:123f::1#dot.nat64.dk"
+    "2a00:1098:2b::1#dot.nat64.dk"
+    "2a00:1098:2c::1#dot.nat64.dk"
   ];
 
   ssh.port = 1450;
@@ -92,6 +89,14 @@ in {
     inherit hostName nameservers;
     nftables.enable = true;
     useDHCP = false;
+  };
+
+  services.resolved = {
+    enable = true;
+    domains = ["~."];
+    fallbackDns = [];
+    dnssec = "true";
+    dnsovertls = "true";
   };
 
   systemd.network = {
