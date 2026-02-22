@@ -7,7 +7,6 @@
   inherit (pkgs.stdenv.hostPlatform) system;
   diskoPkgs = inputs.disko.packages.${system};
   fenixPkgs = inputs.fenix.packages.${system}.stable;
-  hytalePkgs = inputs.hytale-launcher-nix.packages.${system};
 in {
   imports = [
     self.nixosModules.all
@@ -111,7 +110,6 @@ in {
       "rust-docs"
       "rust-src"
     ])
-    hytalePkgs.hytale-launcher
     pkgs.bacon
     pkgs.cargo-flamegraph
     pkgs.fd

@@ -340,29 +340,6 @@
         "type": "github"
       }
     },
-    "hytale-launcher-nix": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1768950186,
-        "narHash": "sha256-ARGD7D586gG2Q2FuEr9Q5dP8TnvSJV9KtUWVT0HFk2Q=",
-        "owner": "JPyke3",
-        "repo": "hytale-launcher-nix",
-        "rev": "ea85e1791171de73813e38dae0621fafa163b3c8",
-        "type": "github"
-      },
-      "original": {
-        "owner": "JPyke3",
-        "repo": "hytale-launcher-nix",
-        "type": "github"
-      }
-    },
     "lanzaboote": {
       "inputs": {
         "crane": "crane",
@@ -574,7 +551,6 @@
         "git-hooks": "git-hooks",
         "gitignore": "gitignore",
         "home-manager": "home-manager",
-        "hytale-launcher-nix": "hytale-launcher-nix",
         "lanzaboote": "lanzaboote",
         "mithril-shell": "mithril-shell",
         "nixdg-ninja": "nixdg-ninja",

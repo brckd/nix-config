@@ -174,12 +174,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hytale-launcher-nix = {
-      url = "github:JPyke3/hytale-launcher-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-utils.follows = "flake-utils";
-    };
-
     nixos-nspawn = {
       url = "github:fpletz/nixos-nspawn/946929c07e5b3f4500d8feede0759494b33de884";
       inputs.nixpkgs.follows = "nixpkgs";
