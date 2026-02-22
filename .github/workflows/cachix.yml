@@ -29,7 +29,7 @@ jobs:
         run: >
           nix run github:Mic92/nix-fast-build --
           --no-nom
-          --flake ".#devShells.x64_86-linux.default"
+          --flake ".#devShells.x86_64-linux.default"
 
   cache_nixos:
     runs-on: ubuntu-latest
