@@ -6,7 +6,6 @@
 }: let
   inherit (pkgs.stdenv.hostPlatform) system;
   diskoPkgs = inputs.disko.packages.${system};
-  fenixPkgs = inputs.fenix.packages.${system}.stable;
 in {
   imports = [
     self.nixosModules.all
@@ -99,17 +98,10 @@ in {
   # Programs
   programs.spicetify.enable = true;
   programs.adwaita-demo.enable = true;
+  programs.fenix.enable = true;
 
   environment.systemPackages = [
     diskoPkgs.disko
-    (fenixPkgs.withComponents [
-      "cargo"
-      "clippy"
-      "rustfmt"
-      "rust-analyzer"
-      "rust-docs"
-      "rust-src"
-    ])
     pkgs.bacon
     pkgs.cargo-flamegraph
     pkgs.fd
