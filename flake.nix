@@ -164,6 +164,13 @@
       inputs.systems.follows = "systems";
     };
 
+    fancade-desktop = {
+      url = "git+https://codeberg.org/bricked/fancade-desktop";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.flake-parts.follows = "flake-parts";
+    };
+
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";

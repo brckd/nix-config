@@ -6,6 +6,7 @@
 }: let
   inherit (pkgs.stdenv.hostPlatform) system;
   diskoPkgs = inputs.disko.packages.${system};
+  fancadeDesktopPkgs = inputs.fancade-desktop.packages.${system};
 in {
   imports = [
     self.nixosModules.all
@@ -102,6 +103,7 @@ in {
 
   environment.systemPackages = [
     diskoPkgs.disko
+    fancadeDesktopPkgs.fancade-desktop
     pkgs.bacon
     pkgs.cargo-flamegraph
     pkgs.fd

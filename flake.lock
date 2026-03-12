@@ -124,6 +124,32 @@
         "type": "github"
       }
     },
+    "fancade-desktop": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1771780635,
+        "narHash": "sha256-Z6zqQMEt9Q0VxBjqS/vyGKRJlUsNqL9FVs/gDFB3pmU=",
+        "ref": "refs/heads/main",
+        "rev": "f9a495e08d1c0ac7076d9c70ebae57a71cc9721c",
+        "revCount": 5,
+        "type": "git",
+        "url": "https://codeberg.org/bricked/fancade-desktop"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/bricked/fancade-desktop"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -544,6 +570,7 @@
       "inputs": {
         "devshell": "devshell",
         "disko": "disko",
+        "fancade-desktop": "fancade-desktop",
         "fenix": "fenix",
         "firefox-addons": "firefox-addons",
         "flake-compat": "flake-compat",
