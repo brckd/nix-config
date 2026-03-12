@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (pkgs.stdenv.hostPlatform) system;
+  agenixPkgs = inputs.agenix.packages.${system};
   diskoPkgs = inputs.disko.packages.${system};
   fancadeDesktopPkgs = inputs.fancade-desktop.packages.${system};
 in {
@@ -102,6 +103,7 @@ in {
   programs.fenix.enable = true;
 
   environment.systemPackages = [
+    agenixPkgs.agenix
     diskoPkgs.disko
     fancadeDesktopPkgs.fancade-desktop
     pkgs.bacon

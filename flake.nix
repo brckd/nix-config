@@ -140,6 +140,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Secrets
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      inputs.systems.follows = "systems";
+    };
+
     # Boot
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.3";
@@ -184,6 +192,15 @@
     nixos-nspawn = {
       url = "github:fpletz/nixos-nspawn/946929c07e5b3f4500d8feede0759494b33de884";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+      inputs.git-hooks.follows = "git-hooks";
+    };
+
+    ditto-bot = {
+      url = "git+https://codeberg.org/ditto/bot";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
       inputs.flake-parts.follows = "flake-parts";
       inputs.treefmt-nix.follows = "treefmt-nix";
       inputs.git-hooks.follows = "git-hooks";

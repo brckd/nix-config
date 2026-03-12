@@ -1,5 +1,32 @@
 {
   "nodes": {
+    "agenix": {
+      "inputs": {
+        "darwin": "darwin",
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770165109,
+        "narHash": "sha256-9VnK6Oqai65puVJ4WYtCTvlJeXxMzAp/69HhQuTdl/I=",
+        "owner": "ryantm",
+        "repo": "agenix",
+        "rev": "b027ee29d959fda4b60b57566d64c98a202e0feb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryantm",
+        "repo": "agenix",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -83,6 +110,28 @@
         "type": "github"
       }
     },
+    "darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "agenix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1744478979,
+        "narHash": "sha256-dyN+teG9G82G+m+PX/aSAagkC+vUv0SgUw3XkPhQodQ=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "43975d782b418ebf4969e9ccba82466728c2851b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -122,6 +171,38 @@
         "ref": "latest",
         "repo": "disko",
         "type": "github"
+      }
+    },
+    "ditto-bot": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "git-hooks": [
+          "git-hooks"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773344176,
+        "narHash": "sha256-i0IKbU+T0REuQukotBqVnU+Zz0QsDQwXkfVVk6oVOmo=",
+        "ref": "refs/heads/main",
+        "rev": "427270f811587b59f20e845056b8562da819a6fd",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://codeberg.org/ditto/bot"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/ditto/bot"
       }
     },
     "fancade-desktop": {
@@ -568,8 +649,10 @@
     },
     "root": {
       "inputs": {
+        "agenix": "agenix",
         "devshell": "devshell",
         "disko": "disko",
+        "ditto-bot": "ditto-bot",
         "fancade-desktop": "fancade-desktop",
         "fenix": "fenix",
         "firefox-addons": "firefox-addons",

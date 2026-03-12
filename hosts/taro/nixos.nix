@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   self,
@@ -13,13 +14,22 @@
   ssh.ports = [1450];
   acme.email = concatStringsSep "i" ["sapl" "ng@br" "cked.dev"];
 
-  # IPv6 proxy using https://nat64.net/
-  # Hostnames are resolved syntax for DNS over TLS
-  nameservers = [
-    "2a01:4f8:c2c:123f::1#dot.nat64.dk"
-    "2a00:1098:2b::1#dot.nat64.dk"
-    "2a00:1098:2c::1#dot.nat64.dk"
-  ];
+  dnsModule = {
+    # IPv6 proxy using https://nat64.net/
+    # Hostnames are resolved syntax for DNS over TLS
+    networking.nameservers = [
+      "2a01:4f8:c2c:123f::1#dot.nat64.dk"
+      "2a00:1098:2b::1#dot.nat64.dk"
+      "2a00:1098:2c::1#dot.nat64.dk"
+    ];
+
+    services.resolved = {
+      enable = true;
+      domains = ["~."];
+      fallbackDns = [];
+      dnsovertls = "true";
+    };
+  };
 
   networks = {
     public = rec {
@@ -55,10 +65,26 @@
         subnet = mkSubnet address prefixLength;
       };
     };
+
+    dittoBot = rec {
+      prefix = "${networks.public.prefix}:ede1";
+      prefixLength = 96;
+
+      gateway = rec {
+        address = "${prefix}::1";
+        subnet = mkSubnet address prefixLength;
+      };
+
+      app = rec {
+        address = "${prefix}::2";
+        subnet = mkSubnet address prefixLength;
+      };
+    };
   };
 in {
   imports = [
     self.nixosModules.all
+    dnsModule
     ./hardware.nix
     ./disko.nix
   ];
@@ -108,7 +134,7 @@ in {
 
   # Containers
   virtualisation.nspawn.containers = {
-    crop = {
+    "crop" = {
       autoStart = true;
 
       network.veth.config = {
@@ -142,21 +168,57 @@ in {
         };
       };
     };
+
+    "ditto-bot" = {
+      autoStart = true;
+
+      binds."/run/agenix/ditto-bot" = {
+        options = ["idmap"];
+        readOnly = true;
+      };
+
+      network.veth.config = {
+        host = {
+          networkConfig = {
+            DHCPServer = false;
+            Address = [networks.dittoBot.gateway.subnet];
+          };
+        };
+        container = {
+          networkConfig = {
+            DHCP = false;
+            Address = [networks.dittoBot.app.subnet];
+            Gateway = [networks.dittoBot.gateway.address];
+          };
+        };
+      };
+
+      config = {
+        imports = [inputs.ditto-bot.nixosModules.default dnsModule];
+
+        system.stateVersion = "25.11";
+
+        services.ditto-bot = {
+          enable = true;
+          envFile = "/run/agenix/ditto-bot/.env";
+        };
+      };
+    };
+  };
+
+  # Secrets
+  age.secrets = {
+    dittoBotEnv = {
+      path = "/run/agenix/ditto-bot/.env";
+      symlink = false;
+    };
   };
 
   # Networking
   networking = {
-    inherit hostName nameservers;
+    inherit hostName;
     useNetworkd = true;
     useDHCP = false;
-  };
-
-  services.resolved = {
-    enable = true;
-    domains = ["~."];
-    fallbackDns = [];
-    dnssec = "true";
-    dnsovertls = "true";
   };
 
   systemd.network = {
