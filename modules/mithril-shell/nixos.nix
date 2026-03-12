@@ -50,9 +50,9 @@ in {
       pkgs.libreoffice # Office application
       pkgs.librewolf # Web browser
       pkgs.loupe # Image viewer
-      pkgs.mission-center # System monitor
       pkgs.nautilus # File manager
       pkgs.papers # Document viewer
+      pkgs.resources # System monitor
       pkgs.snapshot # Camera application
       pkgs.totem # Movie player
       pkgs.tuba # Mastodon client
