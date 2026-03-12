@@ -66,8 +66,8 @@ Config(
             description: Some("Lock the screen"),
             keywords: ["lock screen"],
             icon: Some("system-lock-screen"),
-            command: "hyprlock",
-            args: [],
+            command: "loginctl",
+            args: ["lock-session"],
             confirm: false,
         ),
     ]

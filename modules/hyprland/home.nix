@@ -4,9 +4,12 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf mkOption mkEnableOption types range mapAttrsToList;
+  inherit (lib) mkIf mkOption mkEnableOption mkForce types range mapAttrsToList;
+  inherit (config.lib.stylix) colors;
 
   cfg = config.wayland.windowManager.hyprland;
+
+  border_color = "rgb(${colors.base01})";
 
   workspaceToKey = ws:
     if ws == 10
@@ -74,6 +77,24 @@ in {
 
   config = mkIf cfg.enable {
     programs.hyprlock.enable = true;
+
+    services.hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          lock_cmd = "pidof hyprlock || hyprlock";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+        };
+
+        listeners = [
+          {
+            timeout = 5 * 60;
+            on_timeout = "loginctl lock-session";
+          }
+        ];
+      };
+    };
+
     wayland.windowManager.hyprland = {
       systemd.enable = false;
       settings = {
@@ -81,12 +102,15 @@ in {
           kb_layout = config.home.keyboard.layout;
           touchpad.natural_scroll = true;
         };
+
         monitor = ",highres,auto,1";
 
         general = {
           gaps_in = 5;
           gaps_out = 10;
-          border_size = 0;
+          border_size = 3;
+          "col.active_border" = mkForce border_color;
+          "col.inactive_border" = mkForce border_color;
         };
 
         decoration = {

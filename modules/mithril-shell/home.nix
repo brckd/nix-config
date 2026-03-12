@@ -31,7 +31,7 @@ in {
       (mkIf (config.stylix.enable && cfg.integrations.stylix.enable) {
         theme.colors.primary = config.lib.stylix.colors.base0D;
         settings = {
-          lockCommand = "${pkgs.hyprlock}/bin/hyprlock --immediate";
+          lockCommand = "loginctl lock-session";
           powerMenuEntries = [
             {
               label = "Suspend";
