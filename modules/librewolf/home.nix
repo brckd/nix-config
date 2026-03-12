@@ -55,6 +55,20 @@ in {
                 icon = "https://codeberg.org/assets/img/favicon.svg";
                 definedAliases = ["@codeberg" "@cb"];
               };
+              "Custom Wikipedia" = {
+                _id = "custom-wikipedia";
+                _name = "Wikipedia";
+                urls = singleton {template = "https://en.wikipedia.org/wiki/Special:Search?search={searchTerms}";};
+                icon = "https://en.wikipedia.org/static/favicon/wikipedia.ico";
+                definedAliases = ["@wikipedia" "@wp"];
+              };
+              "Custom Wikipedia (de)" = {
+                _id = "custom-wikipedia-de";
+                _name = "Wikipedia (de)";
+                urls = singleton {template = "https://de.wikipedia.org/wiki/Special:Search?search={searchTerms}";};
+                icon = "https://de.wikipedia.org/static/favicon/wikipedia.ico";
+                definedAliases = ["@wikipediade" "@wpd"];
+              };
               "Fancade Wiki" = {
                 urls = singleton {template = "https://www.fancade.com/wiki/Special:Search?search={searchTerms}";};
                 icon = "https://www.fancade.com/favicon.ico";
@@ -80,11 +94,6 @@ in {
                 icon = "https://gitlab.com/assets/favicon-72a2cad5025aa931d6ea56c3201d1f18e68a8cd39788c7c80d5b2b82aa5143ef.png";
                 definedAliases = ["@gitlab" "@gl"];
               };
-              "Home Manager Issues" = {
-                urls = singleton {template = "https://github.com/nix-community/home-manager/issues?q={searchTerms}";};
-                icon = "https://github.githubassets.com/favicons/favicon.png";
-                definedAliases = ["@homemanagerissues" "@hmi"];
-              };
               "Home Manager Options" = {
                 urls = singleton {template = "https://home-manager-options.extranix.com/?query={searchTerms}";};
                 icon = "https://home-manager-options.extranix.com/images/favicon.png";
@@ -99,6 +108,11 @@ in {
                 urls = singleton {template = "https://developer.mozilla.org/search?q={searchTerms}";};
                 icon = "https://developer.mozilla.org/favicon.svg";
                 definedAliases = ["@mdnwebdocs" "@mdn"];
+              };
+              "MediaWiki" = {
+                urls = singleton {template = "https://www.mediawiki.org/wiki/Special:Search?search={searchTerms}";};
+                icon = "https://www.mediawiki.org/static/apple-touch/mediawiki.png";
+                definedAliases = ["@mediawiki" "@mw"];
               };
               "Nix Documentation" = {
                 urls = singleton {template = "https://nix.dev/search.html?q={searchTerms}";};
@@ -125,11 +139,6 @@ in {
                 icon = "https://wiki.nixos.org/favicon.ico";
                 definedAliases = ["@nixoswiki" "@now"];
               };
-              "Nixpkgs Issues" = {
-                urls = singleton {template = "https://github.com/nixos/nixpkgs/issues?q={searchTerms}";};
-                icon = "https://github.githubassets.com/favicons/favicon.png";
-                definedAliases = ["@nixpkgsissues" "@nxi"];
-              };
               "Noogle" = {
                 urls = singleton {template = "https://noogle.dev/q?term={searchTerms}";};
                 icon = "https://noogle.dev/favicon.png";
@@ -140,20 +149,35 @@ in {
                 icon = "https://porkbun.com/images/favicons/favicon-96x96.png";
                 definedAliases = ["@porkbun" "@pb"];
               };
+              "Rust Book" = {
+                urls = singleton {template = "file://${config.programs.fenix.package}/share/doc/rust/html/book/index.html?search={searchTerms}";};
+                icon = "https://rust-lang.org/static/images/favicon-32x32.png";
+                definedAliases = ["@rustbook" "@rsb"];
+              };
+              "Rust Reference" = {
+                urls = singleton {template = "file://${config.programs.fenix.package}/share/doc/rust/html/reference/index.html?search={searchTerms}";};
+                icon = "https://rust-lang.org/static/images/favicon-32x32.png";
+                definedAliases = ["@rustreference" "@rsr"];
+              };
+              "Rust Standard Library" = {
+                urls = singleton {template = "file://${config.programs.fenix.package}/share/doc/rust/html/std/index.html?search={searchTerms}";};
+                icon = "https://rust-lang.org/static/images/favicon-32x32.png";
+                definedAliases = ["@ruststandardlibrary" "@rsl"];
+              };
+              "Rustnomicon" = {
+                urls = singleton {template = "file://${config.programs.fenix.package}/share/doc/rust/html/nomicon/index.html?search={searchTerms}";};
+                icon = "https://rust-lang.org/static/images/favicon-32x32.png";
+                definedAliases = ["@rustnomicon" "@rsn"];
+              };
               "Searchix" = {
                 urls = singleton {template = "https://searchix.ovh/?query={searchTerms}";};
                 icon = "https://searchix.ovh/favicon.ico";
                 definedAliases = ["@searchix" "@sx"];
               };
-              "Stylix Documentations" = {
+              "Stylix Documentation" = {
                 urls = singleton {template = "https://nix-community.github.io/stylix/?search={searchTerms}";};
                 icon = "https://nix-community.github.io/stylix/favicon-de23e50b.svg";
-                definedAliases = ["@stylixdocs" "@std"];
-              };
-              "Stylix Issues" = {
-                urls = singleton {template = "https://github.com/nix-community/stylix/issues?q={searchTerms}";};
-                icon = "https://github.githubassets.com/favicons/favicon.png";
-                definedAliases = ["@stylixissues" "@sti"];
+                definedAliases = ["@stylixdocs" "@sld"];
               };
               "StartPage" = {
                 urls = singleton {template = "https://noogle.dev/q?term={searchTerms}";};
@@ -164,20 +188,6 @@ in {
                 urls = singleton {template = "https://tld-list.com/?q={searchTerms}";};
                 icon = "https://tld-list.com/favicon.ico";
                 definedAliases = ["@tldlist" "@tl"];
-              };
-              "Wikipedia" = {
-                _id = "custom-wikipedia";
-                _name = "Wikipedia";
-                urls = singleton {template = "https://en.wikipedia.org/wiki/Special:Search?search={searchTerms}";};
-                icon = "https://en.wikipedia.org/static/favicon/wikipedia.ico";
-                definedAliases = ["@wikipedia" "@wp"];
-              };
-              "Wikipedia (de)" = {
-                _id = "custom-wikipedia-de";
-                _name = "Wikipedia (de)";
-                urls = singleton {template = "https://de.wikipedia.org/wiki/Special:Search?search={searchTerms}";};
-                icon = "https://de.wikipedia.org/static/favicon/wikipedia.ico";
-                definedAliases = ["@wikipediade" "@wpd"];
               };
             };
           };
@@ -190,29 +200,24 @@ in {
                 url = "https://bricked.dev";
               }
               {
-                name = "Git";
-                tags = ["bricked" "git"];
-                url = "https://git.bricked.dev";
+                name = "Codeberg";
+                tags = ["git"];
+                url = "https://codeberg.org";
               }
               {
-                name = "Dashboard";
-                tags = ["bricked"];
-                url = "https://dash.bricked.dev";
+                name = "Deepl";
+                tags = ["translator"];
+                url = "https://deepl.com";
               }
               {
-                name = "Status";
-                tags = ["bricked"];
-                url = "https://status.bricked.dev";
+                name = "Fancade Web";
+                tags = ["fancade" "game"];
+                url = "https://play.fancade.com";
               }
               {
                 name = "GitHub";
                 tags = ["git"];
                 url = "https://github.com";
-              }
-              {
-                name = "Codeberg";
-                tags = ["git"];
-                url = "https://codeberg.org";
               }
               {
                 name = "GitLab";
@@ -225,39 +230,24 @@ in {
                 url = "https://gitlab.gnome.org";
               }
               {
-                name = "Nixpkgs Repository";
-                tags = ["nixpkgs" "git"];
-                url = "https://github.com/nixos/nixpkgs";
-              }
-              {
                 name = "Home Manager Repository";
                 tags = ["homemanager" "git"];
                 url = "https://github.com/nix-community/home-manager";
               }
               {
-                name = "Stylix Repository";
-                tags = ["stylix" "git"];
-                url = "https://github.com/nix-community/stylix";
+                name = "Monkeytype";
+                tags = ["typing"];
+                url = "https://monkeytype.com";
               }
               {
-                name = "Deepl";
-                tags = ["translator"];
-                url = "https://deepl.com";
+                name = "Nixpkgs Repository";
+                tags = ["nixpkgs" "git"];
+                url = "https://github.com/nixos/nixpkgs";
               }
               {
-                name = "Fancade Web";
-                tags = ["fancade" "gaming"];
-                url = "https://play.fancade.com";
-              }
-              {
-                name = "HypeHype App";
-                tags = ["hypehype" "gaming"];
-                url = "https://app.hypehype.com";
-              }
-              {
-                name = "HypeHype Learning Hub";
-                tags = ["hypehype" "gaming"];
-                url = "https://learn.hypehype.com";
+                name = "Nushell Book";
+                tags = ["nushell" "docs"];
+                url = "https://www.nushell.sh/book";
               }
               {
                 name = "Proton Mail";
@@ -265,34 +255,14 @@ in {
                 url = "https://mail.proton.me";
               }
               {
-                name = "AnonAddy";
+                name = "Purelymail";
                 tags = ["mail"];
-                url = "https://addy.io";
+                url = "https://www.purelymail.com";
               }
               {
-                name = "SimpleLogin";
-                tags = ["mail"];
-                url = "https://simplelogin.com";
-              }
-              {
-                name = "Vercel";
-                tags = ["hosting"];
-                url = "https://vercel.com";
-              }
-              {
-                name = "Netlify";
-                tags = ["hosting"];
-                url = "https://netlify.com";
-              }
-              {
-                name = "Tailscale";
-                tags = ["hosting"];
-                url = "https://tailscale.com";
-              }
-              {
-                name = "Monkeytype";
-                tags = ["typing"];
-                url = "https://monkeytype.com";
+                name = "Stylix Repository";
+                tags = ["stylix" "git"];
+                url = "https://github.com/nix-community/stylix";
               }
             ];
           };
@@ -325,38 +295,17 @@ in {
       policies = {
         Cookies.Allow = map (d: "https://${d}") [
           "bricked.dev"
-          "github.com"
+          "cachix.org"
           "codeberg.org"
+          "fancade.com"
+          "feddit.org"
+          "github.com"
           "gitlab.com"
           "gitlab.gnome.org"
-          "proton.me"
-          "purelymail.com"
-          "addy.io"
-          "simplelogin.com"
-          "huggingface.co"
-          "vercel.com"
-          "netlify.com"
-          "neon.tech"
-          "penpot.app"
-          "figma.com"
-          "fancade.com"
-          "fancade.club"
-          "discord.com"
-          "spotify.com"
-          "epicgames.com"
-          "steamcommunity.com"
-          "steampowered.com"
-          "adventofcode.com"
-          "fancade.com"
-          "hypehype.com"
-          "tilde.zone"
-          "feddit.org"
-          "nope.chat"
           "monkeytype.com"
-          "typst.app"
-          "keybr.com"
-          "cachix.org"
-          "tailscale.com"
+          "nope.chat"
+          "purelymail.com"
+          "tilde.zone"
         ];
       };
     };
