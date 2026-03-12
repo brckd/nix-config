@@ -117,6 +117,7 @@ in {
     pkgs.nurl
     pkgs.nix-melt
     pkgs.protonvpn-gui
+    pkgs.python3
     pkgs.ripgrep
     pkgs.sd
     pkgs.ungoogled-chromium
