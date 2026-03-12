@@ -105,6 +105,7 @@ in {
     diskoPkgs.disko
     fancadeDesktopPkgs.fancade-desktop
     pkgs.bacon
+    pkgs.bun
     pkgs.cargo-flamegraph
     pkgs.fd
     pkgs.gcc
@@ -119,6 +120,7 @@ in {
     pkgs.ripgrep
     pkgs.sd
     pkgs.ungoogled-chromium
+    pkgs.uv
     pkgs.vesktop
     pkgs.xh
   ];
