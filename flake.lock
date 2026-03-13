@@ -192,11 +192,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773344176,
-        "narHash": "sha256-i0IKbU+T0REuQukotBqVnU+Zz0QsDQwXkfVVk6oVOmo=",
+        "lastModified": 1773441287,
+        "narHash": "sha256-ZYvHJ7jqTX32KdT61HMA9URKKMmUPxAha37Fa0AR7b4=",
         "ref": "refs/heads/main",
-        "rev": "427270f811587b59f20e845056b8562da819a6fd",
-        "revCount": 1,
+        "rev": "8880554f9e81860d6ab7f3e9bdc07721ded0db0c",
+        "revCount": 2,
         "type": "git",
         "url": "https://codeberg.org/ditto/bot"
       },
