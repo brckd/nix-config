@@ -322,6 +322,11 @@ in {
       path = "/run/agenix-ditto-bot/.env";
       symlink = false;
     };
+
+    eggdarBotEnv = {
+      path = "/run/agenix-eggdar-bot/.env";
+      symlink = false;
+    };
   };
 
   # Networking
