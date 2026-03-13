@@ -202,7 +202,7 @@ in {
     "ditto-bot" = {
       autoStart = true;
 
-      binds."/run/agenix/ditto-bot" = {
+      binds."/run/agenix-ditto-bot" = {
         options = ["idmap"];
         readOnly = true;
       };
@@ -230,7 +230,7 @@ in {
 
         services.ditto-bot = {
           enable = true;
-          envFile = "/run/agenix/ditto-bot/.env";
+          envFile = "/run/agenix-ditto-bot/.env";
         };
       };
     };
@@ -238,7 +238,7 @@ in {
     "eggdar-bot" = {
       autoStart = true;
 
-      binds."/run/agenix/eggdar-bot" = {
+      binds."/run/agenix-eggdar-bot" = {
         options = ["idmap"];
         readOnly = true;
       };
@@ -266,7 +266,7 @@ in {
 
         services.eggdar-bot = {
           enable = true;
-          envFile = "/run/agenix/eggdar-bot/.env";
+          envFile = "/run/agenix-eggdar-bot/.env";
         };
       };
     };
@@ -319,7 +319,7 @@ in {
   # Secrets
   age.secrets = {
     dittoBotEnv = {
-      path = "/run/agenix/ditto-bot/.env";
+      path = "/run/agenix-ditto-bot/.env";
       symlink = false;
     };
   };
