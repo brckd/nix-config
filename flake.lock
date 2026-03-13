@@ -224,11 +224,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773441068,
-        "narHash": "sha256-Zsl6Lv5g8+qmy8vvakQ/DeSSKZUr9ibVzma3u3V7eZo=",
+        "lastModified": 1773442943,
+        "narHash": "sha256-KvilCWeQMcXiyZZ4e53UsAtIcf6+6enP/3KStU12Iu8=",
         "ref": "refs/heads/main",
-        "rev": "1a4f97877d4c85f1a4125227c62871558751eeb2",
-        "revCount": 1,
+        "rev": "34871a2dd4646d23c6ba830d4b72fa25a44384f2",
+        "revCount": 2,
         "type": "git",
         "url": "https://codeberg.org/bricked/eggdar-bot"
       },
