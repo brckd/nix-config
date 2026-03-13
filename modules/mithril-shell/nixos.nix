@@ -51,6 +51,7 @@ in {
       pkgs.librewolf # Web browser
       pkgs.loupe # Image viewer
       pkgs.nautilus # File manager
+      pkgs.newsflash # RSS reader
       pkgs.papers # Document viewer
       pkgs.resources # System monitor
       pkgs.snapshot # Camera application
