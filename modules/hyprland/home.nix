@@ -10,6 +10,7 @@
   cfg = config.wayland.windowManager.hyprland;
 
   border_color = "rgb(${colors.base01})";
+  shadow_color = "rgba(${colors.base01}99)";
 
   workspaceToKey = ws:
     if ws == 10
@@ -115,6 +116,7 @@ in {
 
         decoration = {
           rounding = 15;
+          shadow.color = mkForce shadow_color;
         };
 
         animations = {
