@@ -205,6 +205,38 @@
         "url": "https://codeberg.org/ditto/bot"
       }
     },
+    "eggdar-bot": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "git-hooks": [
+          "git-hooks"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773441068,
+        "narHash": "sha256-Zsl6Lv5g8+qmy8vvakQ/DeSSKZUr9ibVzma3u3V7eZo=",
+        "ref": "refs/heads/main",
+        "rev": "1a4f97877d4c85f1a4125227c62871558751eeb2",
+        "revCount": 1,
+        "type": "git",
+        "url": "https://codeberg.org/bricked/eggdar-bot"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/bricked/eggdar-bot"
+      }
+    },
     "fancade-desktop": {
       "inputs": {
         "flake-parts": [
@@ -653,6 +685,7 @@
         "devshell": "devshell",
         "disko": "disko",
         "ditto-bot": "ditto-bot",
+        "eggdar-bot": "eggdar-bot",
         "fancade-desktop": "fancade-desktop",
         "fenix": "fenix",
         "firefox-addons": "firefox-addons",

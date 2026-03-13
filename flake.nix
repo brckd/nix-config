@@ -206,6 +206,15 @@
       inputs.git-hooks.follows = "git-hooks";
     };
 
+    eggdar-bot = {
+      url = "git+https://codeberg.org/bricked/eggdar-bot";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+      inputs.git-hooks.follows = "git-hooks";
+    };
+
     # Assets
     wallpaper = {
       url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/40912e6418737e93b59a38bcf189270cbf26656d/pink-clouds.jpg";

@@ -81,6 +81,21 @@
       };
     };
 
+    eggdarBot = rec {
+      prefix = "${networks.public.prefix}:868d";
+      prefixLength = 96;
+
+      gateway = rec {
+        address = "${prefix}::1";
+        subnet = mkSubnet address prefixLength;
+      };
+
+      internal = rec {
+        address = "${prefix}::2";
+        subnet = mkSubnet address prefixLength;
+      };
+    };
+
     uptimeKuma = rec {
       prefix = "${networks.public.prefix}:ad5d";
       prefixLength = 96;
@@ -216,6 +231,42 @@ in {
         services.ditto-bot = {
           enable = true;
           envFile = "/run/agenix/ditto-bot/.env";
+        };
+      };
+    };
+
+    "eggdar-bot" = {
+      autoStart = true;
+
+      binds."/run/agenix/eggdar-bot" = {
+        options = ["idmap"];
+        readOnly = true;
+      };
+
+      network.veth.config = {
+        host = {
+          networkConfig = {
+            DHCPServer = false;
+            Address = [networks.eggdarBot.gateway.subnet];
+          };
+        };
+        container = {
+          networkConfig = {
+            DHCP = false;
+            Address = [networks.eggdarBot.internal.subnet];
+            Gateway = [networks.eggdarBot.gateway.address];
+          };
+        };
+      };
+
+      config = {
+        imports = [inputs.eggdar-bot.nixosModules.default dnsModule];
+
+        system.stateVersion = "25.11";
+
+        services.eggdar-bot = {
+          enable = true;
+          envFile = "/run/agenix/eggdar-bot/.env";
         };
       };
     };
