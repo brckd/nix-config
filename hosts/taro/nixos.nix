@@ -60,7 +60,7 @@
         subnet = mkSubnet address prefixLength;
       };
 
-      app = rec {
+      internal = rec {
         address = "${prefix}::2";
         subnet = mkSubnet address prefixLength;
       };
@@ -75,7 +75,22 @@
         subnet = mkSubnet address prefixLength;
       };
 
-      app = rec {
+      internal = rec {
+        address = "${prefix}::2";
+        subnet = mkSubnet address prefixLength;
+      };
+    };
+
+    uptimeKuma = rec {
+      prefix = "${networks.public.prefix}:ad5d";
+      prefixLength = 96;
+
+      gateway = rec {
+        address = "${prefix}::1";
+        subnet = mkSubnet address prefixLength;
+      };
+
+      internal = rec {
         address = "${prefix}::2";
         subnet = mkSubnet address prefixLength;
       };
@@ -147,7 +162,7 @@ in {
         container = {
           networkConfig = {
             DHCP = false;
-            Address = [networks.crop.app.subnet];
+            Address = [networks.crop.internal.subnet];
             Gateway = [networks.crop.gateway.address];
           };
         };
@@ -187,7 +202,7 @@ in {
         container = {
           networkConfig = {
             DHCP = false;
-            Address = [networks.dittoBot.app.subnet];
+            Address = [networks.dittoBot.internal.subnet];
             Gateway = [networks.dittoBot.gateway.address];
           };
         };
@@ -201,6 +216,50 @@ in {
         services.ditto-bot = {
           enable = true;
           envFile = "/run/agenix/ditto-bot/.env";
+        };
+      };
+    };
+
+    "uptime-kumma" = {
+      autoStart = true;
+
+      network.veth.config = {
+        host = {
+          networkConfig = {
+            DHCPServer = false;
+            Address = [networks.uptimeKuma.gateway.subnet];
+          };
+        };
+        container = {
+          networkConfig = {
+            DHCP = false;
+            Address = [networks.uptimeKuma.internal.subnet];
+            Gateway = [networks.uptimeKuma.gateway.address];
+          };
+        };
+      };
+
+      config = {
+        imports = [dnsModule];
+
+        system.stateVersion = "25.11";
+        networking.firewall.allowedTCPPorts = [80 443];
+
+        services.uptime-kuma = {
+          enable = true;
+
+          settings = {
+            HOST = networks.uptimeKuma.internal.address;
+            PORT = "8080";
+          };
+        };
+
+        services.caddy = {
+          inherit (acme) email;
+          enable = true;
+          virtualHosts."status.bricked.dev".extraConfig = ''
+            reverse_proxy http://[${networks.uptimeKuma.internal.address}]:8080
+          '';
         };
       };
     };
