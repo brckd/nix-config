@@ -81,7 +81,7 @@
       };
     };
 
-    eggdarBot = rec {
+    greggBot = rec {
       prefix = "${networks.public.prefix}:868d";
       prefixLength = 96;
 
@@ -235,10 +235,10 @@ in {
       };
     };
 
-    "eggdar-bot" = {
+    "gregg-bot" = {
       autoStart = true;
 
-      binds."/run/agenix-eggdar-bot" = {
+      binds."/run/agenix-gregg-bot" = {
         options = ["idmap"];
         readOnly = true;
       };
@@ -247,26 +247,45 @@ in {
         host = {
           networkConfig = {
             DHCPServer = false;
-            Address = [networks.eggdarBot.gateway.subnet];
+            Address = [networks.greggBot.gateway.subnet];
           };
         };
         container = {
           networkConfig = {
             DHCP = false;
-            Address = [networks.eggdarBot.internal.subnet];
-            Gateway = [networks.eggdarBot.gateway.address];
+            Address = [networks.greggBot.internal.subnet];
+            Gateway = [networks.greggBot.gateway.address];
           };
         };
       };
 
       config = {
-        imports = [inputs.eggdar-bot.nixosModules.default dnsModule];
+        imports = [inputs.gregg-bot.nixosModules.default dnsModule];
 
         system.stateVersion = "25.11";
 
-        services.eggdar-bot = {
+        services.gregg-bot = {
           enable = true;
-          envFile = "/run/agenix-eggdar-bot/.env";
+          envFile = "/run/agenix-gregg-bot/.env";
+        };
+
+        services.postgresql = {
+          enable = true;
+          ensureDatabases = ["gregg"];
+          enableTCPIP = true;
+
+          authentication = lib.mkForce ''
+            local sameuser all trust
+            host sameuser all 127.0.0.1/32 trust
+            host sameuser all ::1/128 trust
+          '';
+
+          ensureUsers = [
+            {
+              name = "gregg";
+              ensureDBOwnership = true;
+            }
+          ];
         };
       };
     };
@@ -323,8 +342,8 @@ in {
       symlink = false;
     };
 
-    eggdarBotEnv = {
-      path = "/run/agenix-eggdar-bot/.env";
+    greggBotEnv = {
+      path = "/run/agenix-gregg-bot/.env";
       symlink = false;
     };
   };

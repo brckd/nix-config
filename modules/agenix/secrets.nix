@@ -5,5 +5,5 @@ let
   };
 in {
   "ditto-bot.env.age".publicKeys = [hosts.potato hosts.taro];
-  "eggdar-bot.env.age".publicKeys = [hosts.potato hosts.taro];
+  "gregg-bot.env.age".publicKeys = [hosts.potato hosts.taro];
 }

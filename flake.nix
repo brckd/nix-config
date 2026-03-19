@@ -206,8 +206,8 @@
       inputs.git-hooks.follows = "git-hooks";
     };
 
-    eggdar-bot = {
-      url = "git+https://codeberg.org/bricked/eggdar-bot";
+    gregg-bot = {
+      url = "git+https://codeberg.org/bricked/gregg-bot";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
       inputs.flake-parts.follows = "flake-parts";

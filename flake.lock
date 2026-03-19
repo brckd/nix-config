@@ -205,38 +205,6 @@
         "url": "https://codeberg.org/ditto/bot"
       }
     },
-    "eggdar-bot": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "git-hooks": [
-          "git-hooks"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ],
-        "treefmt-nix": [
-          "treefmt-nix"
-        ]
-      },
-      "locked": {
-        "lastModified": 1773442943,
-        "narHash": "sha256-KvilCWeQMcXiyZZ4e53UsAtIcf6+6enP/3KStU12Iu8=",
-        "ref": "refs/heads/main",
-        "rev": "34871a2dd4646d23c6ba830d4b72fa25a44384f2",
-        "revCount": 2,
-        "type": "git",
-        "url": "https://codeberg.org/bricked/eggdar-bot"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://codeberg.org/bricked/eggdar-bot"
-      }
-    },
     "fancade-desktop": {
       "inputs": {
         "flake-parts": [
@@ -457,6 +425,38 @@
         "ref": "gnome-49",
         "repo": "gnome-shell",
         "type": "gitlab"
+      }
+    },
+    "gregg-bot": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "git-hooks": [
+          "git-hooks"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ],
+        "treefmt-nix": [
+          "treefmt-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773964935,
+        "narHash": "sha256-MFaS327469NoM0p9LH+so002TlkYqEFA3fAVSuq1YGo=",
+        "ref": "refs/heads/main",
+        "rev": "a5018506bf3e4779f6ef9046177d578efc2f6b94",
+        "revCount": 4,
+        "type": "git",
+        "url": "https://codeberg.org/bricked/gregg-bot"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/bricked/gregg-bot"
       }
     },
     "home-manager": {
@@ -685,7 +685,6 @@
         "devshell": "devshell",
         "disko": "disko",
         "ditto-bot": "ditto-bot",
-        "eggdar-bot": "eggdar-bot",
         "fancade-desktop": "fancade-desktop",
         "fenix": "fenix",
         "firefox-addons": "firefox-addons",
@@ -694,6 +693,7 @@
         "flake-utils": "flake-utils",
         "git-hooks": "git-hooks",
         "gitignore": "gitignore",
+        "gregg-bot": "gregg-bot",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "mithril-shell": "mithril-shell",
