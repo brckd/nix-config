@@ -446,11 +446,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1773964935,
-        "narHash": "sha256-MFaS327469NoM0p9LH+so002TlkYqEFA3fAVSuq1YGo=",
+        "lastModified": 1774016964,
+        "narHash": "sha256-JxbMu2967mySRSZSDQzok9jLljDwU45Mc48lSLHdoKs=",
         "ref": "refs/heads/main",
-        "rev": "a5018506bf3e4779f6ef9046177d578efc2f6b94",
-        "revCount": 4,
+        "rev": "df3565ea9c0b6ffbe42d0392c53cd353547544fe",
+        "revCount": 5,
         "type": "git",
         "url": "https://codeberg.org/bricked/gregg-bot"
       },
