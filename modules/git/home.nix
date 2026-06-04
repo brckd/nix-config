@@ -11,13 +11,14 @@ in {
   config = mkIf cfg.enable {
     programs.git = {
       settings = {
-        push.autoSetupRemote = true;
-        pull.rebase = true;
         pager = {
           diff = "${pkgs.riffdiff}/bin/riff";
           show = "${pkgs.riffdiff}/bin/riff";
           log = "${pkgs.riffdiff}/bin/riff";
         };
+        pull.rebase = true;
+        push.autoSetupRemote = true;
+        init.defaultBranch = "main";
         interactive.diffFilter = "${pkgs.riffdiff}/bin/riff";
       };
     };
