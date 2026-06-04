@@ -45,6 +45,11 @@ in {
                 icon = "https://alternativeto.net/static/icons/a2/favicon.svg";
                 definedAliases = ["@alternativeto" "@at"];
               };
+              "ArchWiki" = {
+                urls = singleton {template = "https://wiki.archlinux.org/title/Special:Search?search={searchTerms}";};
+                icon = "https://www.archwiki.org/favicon.ico";
+                definedAliases = ["@archwiki" "@arw"];
+              };
               "Brave" = {
                 urls = singleton {template = "https://search.brave.com/search?q={searchTerms}";};
                 icon = "https://cdn.search.brave.com/serp/v3/_app/immutable/assets/brave-search-icon.CsIFM2aN.svg";
@@ -188,6 +193,11 @@ in {
                 urls = singleton {template = "https://tld-list.com/?q={searchTerms}";};
                 icon = "https://tld-list.com/favicon.ico";
                 definedAliases = ["@tldlist" "@tl"];
+              };
+              "Urban Dictionary" = {
+                urls = singleton {template = "https://www.urbandictionary.com/define.php?term={searchTerms}";};
+                icon = "https://www.urbandictionary.com/favicon-32x32.png";
+                definedAliases = ["@urbandictionary" "@ud"];
               };
             };
           };
