@@ -33,7 +33,7 @@ in {
   };
 
   # Nix
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -131,7 +131,7 @@ in {
     pkgs.moor
     pkgs.nurl
     pkgs.nix-melt
-    pkgs.protonvpn-gui
+    pkgs.proton-vpn
     pkgs.python3
     pkgs.ripgrep
     pkgs.sd

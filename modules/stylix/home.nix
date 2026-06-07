@@ -15,7 +15,7 @@ in {
   ];
   config = mkIf cfg.enable {
     stylix = {
-      iconTheme = {
+      icons = {
         enable = true;
         package = pkgs.morewaita-icon-theme;
         light = "MoreWaita";

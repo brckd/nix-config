@@ -1,8 +1,4 @@
-{
-  self,
-  lib,
-  ...
-}: {
+{self, ...}: {
   imports = [self.homeModules.all];
 
   # Nix
@@ -13,7 +9,7 @@
   programs.home-manager.enable = true;
 
   home = {
-    stateVersion = "25.11";
+    stateVersion = "26.05";
     username = "bricked";
     homeDirectory = "/home/bricked";
     keyboard.layout = "de";

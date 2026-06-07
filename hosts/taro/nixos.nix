@@ -120,7 +120,7 @@ in {
   ];
 
   # Nix
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -185,7 +185,7 @@ in {
 
       config = {
         config = {
-          system.stateVersion = "25.11";
+          system.stateVersion = "26.05";
           networking.firewall.allowedTCPPorts = [80 443];
 
           services.caddy = {
@@ -226,7 +226,7 @@ in {
       config = {
         imports = [inputs.ditto-bot.nixosModules.default dnsModule];
 
-        system.stateVersion = "25.11";
+        system.stateVersion = "26.05";
 
         services.ditto-bot = {
           enable = true;
@@ -262,7 +262,7 @@ in {
       config = {
         imports = [inputs.gregg-bot.nixosModules.default dnsModule];
 
-        system.stateVersion = "25.11";
+        system.stateVersion = "26.05";
 
         services.gregg-bot = {
           enable = true;
@@ -312,7 +312,7 @@ in {
       config = {
         imports = [dnsModule];
 
-        system.stateVersion = "25.11";
+        system.stateVersion = "26.05";
         networking.firewall.allowedTCPPorts = [80 443];
 
         services.uptime-kuma = {
