@@ -72,12 +72,12 @@
 
   inputs = {
     # Nix
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     systems.url = "github:nix-systems/default-linux";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -99,11 +99,6 @@
       inputs.systems.follows = "systems";
     };
 
-    gitignore = {
-      url = "github:hercules-ci/gitignore";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -118,7 +113,6 @@
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.flake-compat.follows = "flake-compat";
-      inputs.gitignore.follows = "gitignore";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -134,7 +128,7 @@
 
     # Preferences
     stylix = {
-      url = "github:nix-community/stylix/release-26.05";
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
       inputs.flake-parts.follows = "flake-parts";
@@ -163,25 +157,25 @@
     };
 
     # Programs
-    mithril-shell = {
-      url = "github:bricked-contrib/mithril-shell";
-      # Don't override nixpkgs input as advised in
-      # https://andreashgk.github.io/mithril-shell/getting-started/installation#setup
-      inputs.home-manager.follows = "home-manager";
-      inputs.flake-utils.follows = "flake-utils";
+    gremlin-shell = {
+      url = "git+https://codeberg.org/bricked/gremlin-shell";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.git-hooks.follows = "git-hooks";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.treefmt-nix.follows = "treefmt-nix";
+    };
+
+    mangowm = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
-    };
-
-    fancade-desktop = {
-      url = "git+https://codeberg.org/bricked/fancade-desktop";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.flake-parts.follows = "flake-parts";
     };
 
     firefox-addons = {

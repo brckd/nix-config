@@ -3,7 +3,6 @@
   lib,
   pkgs,
   self,
-  inputs,
   ...
 }: let
   inherit (builtins) readFile;

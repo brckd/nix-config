@@ -7,7 +7,6 @@
   inherit (pkgs.stdenv.hostPlatform) system;
   agenixPkgs = inputs.agenix.packages.${system};
   diskoPkgs = inputs.disko.packages.${system};
-  fancadeDesktopPkgs = inputs.fancade-desktop.packages.${system};
 in {
   imports = [
     self.nixosModules.all
@@ -25,6 +24,7 @@ in {
       description = "Bricked";
       extraGroups = ["networkmanager" "wheel"];
     };
+
     personal = {
       isNormalUser = true;
       description = "Personal";
@@ -96,11 +96,15 @@ in {
   # Locale
   time.timeZone = "Europe/Berlin";
   services.xserver.xkb.layout = "de";
-  services.kanata.enable = true;
 
   # Desktop
   services.displayManager.gdm.enable = true;
-  services.mithril-shell.enable = true;
+  programs.mango.enable = true;
+
+  services.gremlin-shell = {
+    enable = true;
+    applications.enableCore = true;
+  };
 
   # Shell
   console.useXkbConfig = true;
@@ -118,26 +122,16 @@ in {
   environment.systemPackages = [
     agenixPkgs.agenix
     diskoPkgs.disko
-    fancadeDesktopPkgs.fancade-desktop
+    pkgs.alejandra
     pkgs.bacon
-    pkgs.bun
     pkgs.cargo-flamegraph
-    pkgs.fd
     pkgs.gcc
     pkgs.home-manager
-    pkgs.hyperfine
-    pkgs.icon-library
-    pkgs.jaq
-    pkgs.moor
-    pkgs.nurl
     pkgs.nix-melt
+    pkgs.nurl
     pkgs.proton-vpn
-    pkgs.python3
     pkgs.ripgrep
-    pkgs.sd
-    pkgs.ungoogled-chromium
-    pkgs.uv
-    pkgs.vesktop
-    pkgs.xh
+    pkgs.tuba # Mastodon client
+    pkgs.vesktop # Discord client
   ];
 }

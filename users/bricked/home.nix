@@ -17,7 +17,8 @@
 
   # Theming
   stylix.enable = true;
-  services.mithril-shell.enable = true;
+  wayland.windowManager.mango.enable = true;
+  services.gremlin-shell.enable = true;
 
   # Shell
   programs.carapace.enable = true;
