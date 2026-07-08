@@ -60,6 +60,11 @@ in {
                 icon = "https://codeberg.org/assets/img/favicon.svg";
                 definedAliases = ["@codeberg" "@cb"];
               };
+              "Crates" = {
+                urls = singleton {template = "https://crates.io/search?q={searchTerms}";};
+                icon = "https://crates.io/favicon.ico";
+                definedAliases = ["@crates" "@cr"];
+              };
               "Custom Wikipedia" = {
                 _id = "custom-wikipedia";
                 _name = "Wikipedia";
@@ -100,9 +105,9 @@ in {
                 definedAliases = ["@gitlab" "@gl"];
               };
               "Home Manager Options" = {
-                urls = singleton {template = "https://home-manager-options.extranix.com/?query={searchTerms}";};
-                icon = "https://home-manager-options.extranix.com/images/favicon.png";
-                definedAliases = ["@homemmanageropts" "@hmo"];
+                urls = singleton {template = "https://search.nixos.org/options?source=home_manager&query={searchTerms}";};
+                icon = "https://search.nixos.org/favicon.png";
+                definedAliases = ["@homemanageroptions" "@hmo"];
               };
               "Lib.rs" = {
                 urls = singleton {template = "https://lib.rs/search?q={searchTerms}";};
@@ -129,10 +134,10 @@ in {
                 icon = "https://nix.dev/manual/nix/latest/favicon.svg";
                 definedAliases = ["@nixmanual" "@nxm"];
               };
-              "Nix Packages" = {
+              "Nixpkgs" = {
                 urls = singleton {template = "https://search.nixos.org/packages?query={searchTerms}";};
                 icon = "https://search.nixos.org/favicon.png";
-                definedAliases = ["@nixpackages" "@nxp"];
+                definedAliases = ["@nixpkgs" "@np"];
               };
               "NixOS Options" = {
                 urls = singleton {template = "https://search.nixos.org/options?query={searchTerms}";};
@@ -268,6 +273,11 @@ in {
                 name = "Purelymail";
                 tags = ["mail"];
                 url = "https://www.purelymail.com";
+              }
+              {
+                name = "Rust Standard Library";
+                tags = ["rust" "docs"];
+                url = "file://${config.programs.fenix.package}/share/doc/rust/html/std/index.html";
               }
               {
                 name = "Stylix Repository";
