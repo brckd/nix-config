@@ -48,11 +48,12 @@ in {
         };
 
         settings = {
-          edit_mode = "vi";
-          show_banner = false;
           buffer_editor = "hx";
-          cursor_shape.vi_normal = "blink_block";
           cursor_shape.vi_insert = "blink_line";
+          cursor_shape.vi_normal = "blink_block";
+          edit_mode = "vi";
+          rm.always_trash = true;
+          show_banner = false;
         };
 
         environmentVariables = {
