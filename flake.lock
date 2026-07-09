@@ -664,18 +664,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1764591654,
-        "narHash": "sha256-lSC5GPSTlmVCQJbXzv7hb9v2TFhizSp0POZCmMKegFk=",
-        "owner": "fpletz",
-        "repo": "nixos-nspawn",
-        "rev": "946929c07e5b3f4500d8feede0759494b33de884",
-        "type": "github"
+        "lastModified": 1783562138,
+        "narHash": "sha256-0/14sN9XxKbhY+C/TcjIHZ0EpyWlfXpOeGde5uiFSd0=",
+        "ref": "refs/heads/main",
+        "rev": "4fe3aca9de156d4514e23aa66b7e987609b5c925",
+        "revCount": 68,
+        "type": "git",
+        "url": "https://codeberg.org/bricked/nixos-nspawn"
       },
       "original": {
-        "owner": "fpletz",
-        "repo": "nixos-nspawn",
-        "rev": "946929c07e5b3f4500d8feede0759494b33de884",
-        "type": "github"
+        "type": "git",
+        "url": "https://codeberg.org/bricked/nixos-nspawn"
       }
     },
     "nixpkgs": {

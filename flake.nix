@@ -189,7 +189,7 @@
     };
 
     nixos-nspawn = {
-      url = "github:fpletz/nixos-nspawn/946929c07e5b3f4500d8feede0759494b33de884";
+      url = "git+https://codeberg.org/bricked/nixos-nspawn";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
       inputs.treefmt-nix.follows = "treefmt-nix";
