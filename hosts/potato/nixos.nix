@@ -104,6 +104,7 @@ in {
   services.gremlin-shell = {
     enable = true;
     applications.enableCore = true;
+    applications.enableDeveloper = true;
   };
 
   # Shell
