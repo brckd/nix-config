@@ -41,9 +41,11 @@ in {
       experimental-features = ["nix-command" "flakes"];
       trusted-users = ["@wheel"];
     };
+
     gc = {
       automatic = true;
-      dates = "weekly";
+      dates = "daily";
+      options = "--delete-older-than 30d";
     };
   };
 
