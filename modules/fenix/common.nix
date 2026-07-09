@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkDefault mkEnableOption mkIf mkMerge mkOption types;
+  inherit (lib) mkDefault mkEnableOption mkIf mkOption types;
   inherit (pkgs.stdenv.hostPlatform) system;
 
   fenixPkgs = inputs.fenix.packages.${system}.stable;
@@ -26,24 +26,11 @@ in {
     };
   };
 
-  config = mkIf cfg.enable (mkMerge [
-    {
-      programs.fenix.package = mkDefault (
-        if cfg.components != null
-        then fenixPkgs.withComponents cfg.components
-        else fenixPkgs.defaultToolchain
-      );
-    }
-
-    {
-      programs.fenix.components = [
-        "cargo"
-        "clippy"
-        "rustfmt"
-        "rust-analyzer"
-        "rust-docs"
-        "rust-src"
-      ];
-    }
-  ]);
+  config = mkIf cfg.enable {
+    programs.fenix.package = mkDefault (
+      if cfg.components != null
+      then fenixPkgs.withComponents cfg.components
+      else fenixPkgs.defaultToolchain
+    );
+  };
 }
