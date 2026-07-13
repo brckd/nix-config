@@ -128,6 +128,7 @@ in {
     pkgs.alejandra
     pkgs.bacon
     pkgs.cargo-flamegraph
+    pkgs.fd
     pkgs.gcc
     pkgs.home-manager
     pkgs.nix-melt
