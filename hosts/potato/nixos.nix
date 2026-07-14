@@ -118,9 +118,9 @@ in {
   };
 
   # Programs
-  programs.spicetify.enable = true;
   programs.adwaita-demo.enable = true;
-  programs.fenix.enable = true;
+  programs.rust.enable = true;
+  programs.spicetify.enable = true;
 
   environment.systemPackages = [
     agenixPkgs.agenix

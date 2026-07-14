@@ -25,6 +25,7 @@ in {
               firefoxAddons.darkreader
             ];
           };
+
           search = {
             default = "ddg";
             force = true;
@@ -160,22 +161,22 @@ in {
                 definedAliases = ["@porkbun" "@pb"];
               };
               "Rust Book" = {
-                urls = singleton {template = "file://${config.programs.fenix.package}/share/doc/rust/html/book/index.html?search={searchTerms}";};
+                urls = singleton {template = "file://${config.programs.rust.package}/share/doc/rust/html/book/index.html?search={searchTerms}";};
                 icon = "https://rust-lang.org/static/images/favicon-32x32.png";
                 definedAliases = ["@rustbook" "@rsb"];
               };
               "Rust Reference" = {
-                urls = singleton {template = "file://${config.programs.fenix.package}/share/doc/rust/html/reference/index.html?search={searchTerms}";};
+                urls = singleton {template = "file://${config.programs.rust.package}/share/doc/rust/html/reference/index.html?search={searchTerms}";};
                 icon = "https://rust-lang.org/static/images/favicon-32x32.png";
                 definedAliases = ["@rustreference" "@rsr"];
               };
               "Rust Standard Library" = {
-                urls = singleton {template = "file://${config.programs.fenix.package}/share/doc/rust/html/std/index.html?search={searchTerms}";};
+                urls = singleton {template = "file://${config.programs.rust.package}/share/doc/rust/html/std/index.html?search={searchTerms}";};
                 icon = "https://rust-lang.org/static/images/favicon-32x32.png";
                 definedAliases = ["@ruststandardlibrary" "@rsl"];
               };
               "Rustnomicon" = {
-                urls = singleton {template = "file://${config.programs.fenix.package}/share/doc/rust/html/nomicon/index.html?search={searchTerms}";};
+                urls = singleton {template = "file://${config.programs.rust.package}/share/doc/rust/html/nomicon/index.html?search={searchTerms}";};
                 icon = "https://rust-lang.org/static/images/favicon-32x32.png";
                 definedAliases = ["@rustnomicon" "@rsn"];
               };
@@ -206,6 +207,7 @@ in {
               };
             };
           };
+
           bookmarks = {
             force = true;
             settings = [
@@ -277,7 +279,7 @@ in {
               {
                 name = "Rust Standard Library";
                 tags = ["rust" "docs"];
-                url = "file://${config.programs.fenix.package}/share/doc/rust/html/std/index.html";
+                url = "file://${config.programs.rust.package}/share/doc/rust/html/std/index.html";
               }
               {
                 name = "Stylix Repository";
@@ -286,6 +288,7 @@ in {
               }
             ];
           };
+
           settings = {
             "extensions.autoDisableScopes" = 0; # Enable extensions
             "browser.aboutConfig.showWarning" = false;
@@ -312,6 +315,7 @@ in {
           };
         };
       };
+
       policies = {
         Cookies.Allow = map (d: "https://${d}") [
           "bricked.dev"

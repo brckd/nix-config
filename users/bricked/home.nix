@@ -54,5 +54,5 @@
   # Apps
   programs.ghostty.enable = true;
   programs.librewolf.enable = true;
-  programs.fenix.enable = true;
+  programs.rust.enable = true;
 }
