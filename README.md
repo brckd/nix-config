@@ -14,12 +14,12 @@ A simple Nix config for me and my laptop <3
 
 ## Apps
 
-| name                                      | description                           |
-| ----------------------------------------- | ------------------------------------- |
-| [LibreWolf](https://librewolf.net/)       | Private and secure Firefox derivative |
-| [Ghostty](https://ghostty.org)            | GTK-native terminal emulator          |
-| [Helix](https://https://helix-editor.com) | Just-works VIM replacement            |
-| [Nushell](https://nushell.sh)             | Programmable command line shell       |
+| name                                | description                           |
+| ----------------------------------- | ------------------------------------- |
+| [LibreWolf](https://librewolf.net/) | Private and secure Firefox derivative |
+| [Ghostty](https://ghostty.org)      | GTK-native terminal emulator          |
+| [Helix](https://helix-editor.com)   | Just-works VIM replacement            |
+| [Nushell](https://nushell.sh)       | Programmable command line shell       |
 
 ## Documentation
 
