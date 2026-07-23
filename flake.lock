@@ -97,21 +97,6 @@
     },
     "crane": {
       "locked": {
-        "lastModified": 1783203018,
-        "narHash": "sha256-G6R9IT/xwFuu+CYBWDUAok6AdC4ERC4ZfPPFtEpxnZE=",
-        "owner": "ipetkov",
-        "repo": "crane",
-        "rev": "80db5bdc391be8a1794f6d8a2d56e3a84ebcede2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "ipetkov",
-        "repo": "crane",
-        "type": "github"
-      }
-    },
-    "crane_2": {
-      "locked": {
         "lastModified": 1754269165,
         "narHash": "sha256-0tcS8FHd4QjbCVoxN9jI+PjHgA4vc/IjkUSp+N3zy0U=",
         "owner": "ipetkov",
@@ -403,7 +388,6 @@
     },
     "gremlin-shell": {
       "inputs": {
-        "crane": "crane",
         "flake-parts": [
           "flake-parts"
         ],
@@ -415,6 +399,7 @@
         "nixpkgs": [
           "nixpkgs"
         ],
+        "rust-overlay": "rust-overlay",
         "systems": [
           "systems"
         ],
@@ -423,11 +408,12 @@
         ]
       },
       "locked": {
-        "lastModified": 1783478853,
-        "narHash": "sha256-u95FBgDesKhARqfOwFVJefjBpfjKBRjCLEofSZB+Pj0=",
+        "lastModified": 1786594243,
+        "narHash": "sha256-7SituGpOYXmCgoht1HmH6LyRl0C/n/KY8U35sJYiSaQ=",
         "ref": "refs/heads/main",
-        "rev": "c3deeec1e93e5a3e3f66cb8e480c45d127dd569f",
-        "revCount": 14,
+        "rev": "9463f115c345e41882395f5010fdedff468db2c2",
+        "revCount": 35,
+        "submodules": true,
         "type": "git",
         "url": "https://codeberg.org/bricked/gremlin-shell"
       },
@@ -458,7 +444,7 @@
     },
     "lanzaboote": {
       "inputs": {
-        "crane": "crane_2",
+        "crane": "crane",
         "flake-compat": [
           "flake-compat"
         ],
@@ -471,7 +457,7 @@
         "pre-commit-hooks-nix": [
           "git-hooks"
         ],
-        "rust-overlay": "rust-overlay"
+        "rust-overlay": "rust-overlay_2"
       },
       "locked": {
         "lastModified": 1762205063,
@@ -718,7 +704,7 @@
         "nixos-generators": "nixos-generators",
         "nixos-nspawn": "nixos-nspawn",
         "nixpkgs": "nixpkgs",
-        "rust-overlay": "rust-overlay_2",
+        "rust-overlay": "rust-overlay_3",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "systems": "systems",
@@ -727,6 +713,27 @@
       }
     },
     "rust-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "gremlin-shell",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783921439,
+        "narHash": "sha256-DsSIQSRMrLOz40LrGZ03sp2RlJ9sz3wKpd8XPTOzXnw=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "e013376c32a8fcf07ddb6ec71739552bc118b7bd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
           "lanzaboote",
@@ -747,7 +754,7 @@
         "type": "github"
       }
     },
-    "rust-overlay_2": {
+    "rust-overlay_3": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
