@@ -149,11 +149,9 @@
 
     # Boot
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.3";
+      url = "github:nix-community/lanzaboote/v1.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-compat.follows = "flake-compat";
-      inputs.flake-parts.follows = "flake-parts";
-      inputs.pre-commit-hooks-nix.follows = "git-hooks";
+      inputs.pre-commit.follows = "git-hooks";
     };
 
     # Programs
