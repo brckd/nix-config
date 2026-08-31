@@ -41,7 +41,7 @@
     signing = {
       signByDefault = true;
       format = "openpgp";
-      key = "A522 E927 3786 E55C 68FA 93E0 B84C 306C 3E35 AB5B";
+      key = "7B28 3F98 065C CDAC A4BF F235 0448 5EA0 7F3F AB31";
     };
   };
 
