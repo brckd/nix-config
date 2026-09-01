@@ -128,7 +128,7 @@
 
     # Preferences
     stylix = {
-      url = "github:nix-community/stylix";
+      url = "github:bricked-dev/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
       inputs.flake-parts.follows = "flake-parts";

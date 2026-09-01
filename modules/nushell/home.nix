@@ -3,27 +3,33 @@
   lib,
   ...
 }: let
-  inherit (lib) mkOption mkIf mkMerge singleton types mapAttrsToList;
-  inherit (lib.hm.nushell) mkNushellInline;
+  inherit (lib) mkIf;
 
   cfg = config.programs.nushell;
 in {
-  options.programs.nushell = {
-    shellAbbrs = mkOption {
-      type = types.attrsOf types.str;
-      default = {};
-    };
-  };
+  config = mkIf cfg.enable {
+    programs.nushell = {
+      environmentVariables = {
+        PROMPT_INDICATOR_VI_NORMAL = "";
+        PROMPT_INDICATOR_VI_INSERT = "";
+      };
 
-  config = mkIf cfg.enable (mkMerge [
-    {
-      programs.nushell = {
-        shellAbbrs = {
+      settings = {
+        buffer_editor = "hx";
+        cursor_shape.helix_insert = "line";
+        cursor_shape.helix_normal = "block";
+        edit_mode = "helix";
+        rm.always_trash = true;
+        show_banner = false;
+
+        abbreviations = {
           # Unix
           cpr = "cp --recursive";
 
           # Nix
           nr = "nix run";
+          nf = "nix flake";
+          nfu = "nix flake update";
           nrs = "nixos-rebuild switch --sudo --flake .";
           nrt = "nixos-rebuild test --sudo --flake .";
           hms = "home-manager switch --flake .";
@@ -37,6 +43,7 @@ in {
           gcan = "git commit --amend --no-edit";
           gp = "git push";
           gpf = "git push --force";
+          gpl = "git pull";
           ga = "git add";
           gaa = "git add .";
           gap = "git add --patch";
@@ -45,99 +52,10 @@ in {
           gdh = "git diff HEAD~ HEAD";
           gdc = "git diff --cached";
           gdcn = "git diff --cached --name-only";
-        };
-
-        settings = {
-          buffer_editor = "hx";
-          cursor_shape.vi_insert = "blink_line";
-          cursor_shape.vi_normal = "blink_block";
-          edit_mode = "vi";
-          rm.always_trash = true;
-          show_banner = false;
-        };
-
-        environmentVariables = {
-          PROMPT_INDICATOR_VI_NORMAL = "";
-          PROMPT_INDICATOR_VI_INSERT = "";
+          gcp = "git cherry-pick";
+          gs = "git switch";
         };
       };
-    }
-
-    (mkIf (cfg.shellAbbrs != {}) {
-      programs.nushell = {
-        environmentVariables.abbrs =
-          mapAttrsToList (name: expansion: {
-            inherit name expansion;
-            description = "Alias for `${expansion}`";
-          })
-          cfg.shellAbbrs;
-
-        settings = {
-          keybindings = [
-            {
-              name = "abbr";
-              modifier = "none";
-              keycode = "space";
-              mode = ["emacs" "vi_normal" "vi_insert"];
-              event = [
-                {
-                  send = "menu";
-                  name = "abbr_menu";
-                }
-                {
-                  edit = "insertchar";
-                  value = " ";
-                }
-              ];
-            }
-            {
-              name = "abbr";
-              modifier = "none";
-              keycode = "enter";
-              mode = ["emacs" "vi_normal" "vi_insert"];
-              event = [
-                {
-                  send = "menu";
-                  name = "abbr_menu";
-                }
-                {
-                  send = "enter";
-                }
-              ];
-            }
-          ];
-          menus = singleton {
-            name = "abbr_menu";
-            only_buffer_difference = false;
-            marker = "none";
-            type = {
-              layout = "columnar";
-              columns = 1;
-              col_width = 20;
-              col_padding = 2;
-            };
-            style = {
-              text = "green";
-              selected_text = "green_reverse";
-              description_text = "yellow";
-            };
-            source =
-              mkNushellInline
-              #nu
-              ''
-                { |buffer, position|
-                  let match = $env.abbrs | where name == $buffer
-
-                  if ($match | is-empty) {
-                    { value: $buffer }
-                  } else {
-                    { value: ($match | first).expansion }
-                  }
-                }
-              '';
-          };
-        };
-      };
-    })
-  ]);
+    };
+  };
 }
