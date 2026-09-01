@@ -59,7 +59,7 @@ in {
         monitorrule = "model:U28E590,scale:1.5";
 
         # Spacing
-        border_radius = 15;
+        border_radius = 20;
         borderpx = 3;
         gappih = gap;
         gappiv = gap;
