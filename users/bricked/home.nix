@@ -45,6 +45,16 @@
     };
   };
 
+  programs.mergiraf = {
+    enable = true;
+    enableGitIntegration = true;
+  };
+
+  programs.difftastic = {
+    enable = true;
+    git.enable = true;
+  };
+
   # Editor
   programs.helix = {
     enable = true;
