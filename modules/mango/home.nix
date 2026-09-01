@@ -55,6 +55,9 @@ in {
       settings = {
         exec-once = ["anyrun daemon"];
 
+        # Scaling
+        monitorrule = "model:U28E590,scale:1.5";
+
         # Spacing
         border_radius = 15;
         borderpx = 3;
