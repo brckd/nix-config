@@ -12,8 +12,8 @@ in {
   config = mkIf cfg.enable {
     stylix = {
       image = inputs.wallpaper;
-      base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-      override.base0C = "90c0e4"; # make teal less intense
+      base16Scheme = ./coal.yaml;
+
       fonts = rec {
         sansSerif = {
           package = pkgs.lexend;
