@@ -15,11 +15,13 @@ in {
       base16Scheme = ./coal.yaml;
 
       fonts = rec {
-        sansSerif = {
-          package = pkgs.lexend;
-          name = "Lexend";
-        };
         serif = sansSerif;
+
+        sansSerif = {
+          package = pkgs.adwaita-fonts;
+          name = "Adwaita Sans";
+        };
+
         monospace = {
           package = pkgs.nerd-fonts.jetbrains-mono;
           name = "JetBrainsMono Nerd Font Mono";
