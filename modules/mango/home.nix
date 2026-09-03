@@ -10,7 +10,7 @@
 
   cfg = config.wayland.windowManager.mango;
 
-  backgroundColor = "0x${colors.base0D}ff";
+  backgroundColor = "0x${colors.base02}ff";
   borderColor = "0x${colors.base01}ff";
   gap = 10;
 
